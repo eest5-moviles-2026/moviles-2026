@@ -6,7 +6,7 @@ Este repositorio contiene la planificación, recursos didácticos, códigos de e
 ---
 
 ## 📌 Enfoque Pedagógico y Tecnológico
-Debido a las restricciones de tiempo y recursos técnicos habituales en el entorno escolar, el curso se enfoca en el desarrollo de **Aplicaciones Web Progresivas (PWAs)** utilizando tecnologías web estándar (HTML, CSS y JavaScript puro). 
+Debido a las restricciones de tiempo y recursos técnicos habituales en el entorno escolar, el curso se enfoca en el desarrollo de **Aplicaciones Web Progresivas (PWAs)** utilizando tecnologías web estándar (HTML, CSS y JavaScript Vanilla). 
 
 Este enfoque permite:
 *   Aprender los conceptos fundamentales del desarrollo móvil (Mobile First, layouts fluidos, consumo de APIs, ciclo de vida del software, persistencia local y soporte offline).
