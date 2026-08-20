@@ -105,3 +105,43 @@ Al finalizar, debés crear un archivo `README.md` formateado en Markdown explica
     `█`  
     `██`  
     `███`
+
+---
+
+## 🚀 Desafío Semanal Obligatorio: Peaje Inteligente (Telepase)
+
+Este ejercicio es de carácter obligatorio y deberá ser presentado en la próxima clase. Resolverlo en un archivo JavaScript llamado `peaje.js` dentro de esta carpeta, y vincularlo en el archivo `index.html` provisto.
+
+### Consigna:
+Escribir un script que implemente dos funciones principales para simular la facturación automática de una cabina de peaje inteligente.
+
+#### 1. Función `calcularTarifa(tipoVehiculo, hora, esFeriado)`
+Debe recibir el tipo de vehículo (String), la hora del día en formato militar (Number de 0 a 23) y si es un día feriado (Boolean). Debe retornar el monto final de la tarifa cobrada.
+
+*   **Tarifas Base:**
+    *   `"moto"`: $150
+    *   `"auto"`: $300
+    *   `"camion"`: $600
+*   **Regla de Hora Pico (Recargo del 30%):**
+    *   Se aplica si la hora está entre las **8 y las 10 inclusive**, o entre las **17 y las 19 inclusive**, y además el día **no** es feriado (es decir, `esFeriado` es `false`).
+    *   Si es feriado, la hora pico no aplica y se cobra la tarifa base.
+*   **Controles adicionales (Robustez):**
+    *   La función debe aceptar el tipo de vehículo sin importar si viene en mayúsculas, minúsculas o mezcla (ej: `"AuTo"`, `"MOTO"` deben ser válidos).
+    *   Si el vehículo ingresado no es ninguno de los tres tipos válidos, debe retornar `0` e imprimir una advertencia en consola.
+
+#### 2. Función `simularFilaCabina(cantidadVehiculos)`
+Simula una fila de vehículos que pasan de forma consecutiva por la cabina.
+*   Debe simular el paso del número de vehículos indicado en el parámetro.
+*   En cada iteración del bucle, debés simular de forma aleatoria los datos del vehículo:
+    *   **Tipo de vehículo:** Elegido aleatoriamente entre `"moto"`, `"auto"`, `"camion"`.
+    *   **Hora:** Elegido aleatoriamente entre 0 y 23.
+    *   **Feriado:** Elegido aleatoriamente (`true` o `false`).
+*   Por cada vehículo simulado, debe llamar a la función `calcularTarifa` para obtener el cobro.
+*   Debe acumular la facturación total y mostrar en consola el detalle de cada vehículo procesado (ej: `"[Intento X] Vehículo: auto | Hora: 18 | Feriado: false | Tarifa cobrada: $390"`).
+*   Al finalizar el bucle, debe retornar el monto total recaudado.
+
+#### Ejemplos para pruebas manuales en consola:
+*   `calcularTarifa("moto", 9, false)` 👉 Retorna: `195` (Tarifa $150 + 30% recargo por hora pico).
+*   `calcularTarifa("auto", 18, true)` 👉 Retorna: `300` (Tarifa base, al ser feriado no aplica hora pico).
+*   `calcularTarifa("camion", 12, false)` 👉 Retorna: `600` (Tarifa base, hora no pico).
+
