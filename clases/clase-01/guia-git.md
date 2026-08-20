@@ -58,11 +58,14 @@ git push
 
 Para entender a fondo qué hace la terminal cuando ejecutás cada instrucción, acá tenés la explicación técnica de cada comando de Git:
 
+*   **`git init`**: Inicializa una carpeta común y corriente como un repositorio local de Git. Crea la carpeta oculta `.git` y "prende las cámaras de seguridad" de la carpeta para empezar a registrar los cambios.
+*   **`git remote add origin [URL]`**: Vincula tu repositorio local de la computadora con tu repositorio remoto de GitHub. El nombre `origin` es un apodo que se le asigna a esa dirección web para facilitar los envíos y descargas.
+*   **`git branch -M main`**: Renombra la rama por defecto a `main` para coincidir con la nomenclatura moderna y evitar inconsistencias con GitHub.
 *   **`git clone [URL]`**: Descarga por primera vez un repositorio existente desde GitHub a tu computadora local. Crea una carpeta con todos los archivos y la configuración de Git ya vinculada.
 *   **`git status`**: Te muestra el estado actual de tu directorio de trabajo. Te avisa qué archivos fueron modificados, cuáles se crearon nuevos (sin seguimiento) y cuáles ya están preparados en el área de espera (*staging*) listos para confirmarse. **Es el comando que más tenés que usar para evitar subir archivos no deseados.**
 *   **`git add [archivo]`** (o `git add .`): Mueve tus cambios del directorio de trabajo al área de espera (*Staging Area*). Es como preparar las cartas dentro de un sobre antes de cerrarlo y enviarlo. El punto `.` indica "agregar todo lo que haya cambiado".
 *   **`git commit -m "[mensaje]"`**: Registra permanentemente los cambios que preparaste con `git add` en el historial local del proyecto. Guarda una versión (un "commit") con una etiqueta descriptiva (el mensaje) para saber qué se hizo en ese paso.
-*   **`git push`**: Sube todos los commits locales confirmados desde tu computadora a la rama correspondiente en el servidor remoto de GitHub. Es el paso final que publica tu código en la nube.
+*   **`git push`** (o `git push -u origin main`): Sube todos los commits locales confirmados desde tu computadora a la rama correspondiente en el servidor remoto de GitHub. Es el paso final que publica tu código en la nube. El flag `-u` (Upstream) sirve la primera vez para enlazar permanentemente tu rama local con la de GitHub, permitiéndote usar solo `git push` o `git pull` en los siguientes envíos.
 *   **`git pull`**: Trae y fusiona los últimos cambios que estén en el servidor de GitHub a tu copia local. Sirve para actualizar tu computadora si vos u otra persona subieron cambios desde otro lado.
 *   **`git log`**: Muestra el historial completo de commits (versiones guardadas) en orden cronológico inverso, detallando autor, fecha, código identificador y mensaje de cada commit.
 *   **`git diff`**: Compara tus archivos actuales con la última versión guardada. Te muestra línea por línea qué agregaste (en verde con un `+`) o qué borraste (en rojo con un `-`) antes de hacer `git add`.
