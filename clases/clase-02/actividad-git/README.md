@@ -35,6 +35,13 @@ El equipo de la **PC 1** creará el repositorio de trabajo grupal. En su computa
    ```
 4. Vayan a `Settings` -> `Collaborators` en su repositorio y agreguen como colaboradores a las cuentas de GitHub de las **PCs 2, 3, 4 y 5**.
 
+> [!NOTE]
+> **¿Qué hace cada comando en el Paso 0?**
+> *   `git init`: Inicializa la carpeta local como repositorio Git (crea la carpeta oculta `.git` para registrar los cambios).
+> *   `git remote add origin [URL]`: Vincula tu repositorio local con el de GitHub en la nube. Le da a esa dirección web el apodo de `origin`.
+> *   `git branch -M main`: Renombra la rama por defecto a `main` para coincidir con el nombre de rama estándar en GitHub.
+> *   `git push -u origin main`: Sube la rama `main` por primera vez a GitHub. El flag `-u` enlaza ambas ramas permanentemente para que en el futuro solo debas escribir `git push` o `git pull`.
+
 ---
 
 ## 🏁 Paso 1: Clonar y crear tu propia rama (PC 2, 3, 4 y 5)
