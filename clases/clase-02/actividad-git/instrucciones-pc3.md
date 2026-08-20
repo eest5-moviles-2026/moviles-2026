@@ -27,4 +27,4 @@ Buscá el comentario `<!-- [PC 3] Agregá tu bloque de créditos abajo de este c
 ---
 
 ## 🏁 Siguiente Paso:
-Cuando termines de guardar y verificar que el diseño se vea bien en tu navegador, hacé commit en tu terminal y subí la rama a GitHub como indica el paso 2 de la [`README.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/README.md).
+Cuando termines de guardar y verificar que el diseño se vea bien en tu navegador, hacé commit en tu terminal y subí la rama a GitHub como indica el paso 2 de la [`README.md`](README.md).

@@ -9,11 +9,11 @@ En esta actividad práctica, las 5 computadoras del laboratorio trabajaremos sob
 ## 👥 Roles y Tareas de los Equipos
 
 Cada computadora tiene una tarea específica asignada en archivos individuales dentro de esta carpeta:
-*   **PC 1:** Ver [`instrucciones-pc1.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/instrucciones-pc1.md)
-*   **PC 2:** Ver [`instrucciones-pc2.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/instrucciones-pc2.md)
-*   **PC 3:** Ver [`instrucciones-pc3.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/instrucciones-pc3.md)
-*   **PC 4:** Ver [`instrucciones-pc4.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/instrucciones-pc4.md)
-*   **PC 5:** Ver [`instrucciones-pc5.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/instrucciones-pc5.md)
+*   **PC 1:** Ver [`instrucciones-pc1.md`](./instrucciones-pc1.md)
+*   **PC 2:** Ver [`instrucciones-pc2.md`](./instrucciones-pc2.md)
+*   **PC 3:** Ver [`instrucciones-pc3.md`](./instrucciones-pc3.md)
+*   **PC 4:** Ver [`instrucciones-pc4.md`](./instrucciones-pc4.md)
+*   **PC 5:** Ver [`instrucciones-pc5.md`](./instrucciones-pc5.md)
 
 ---
 
