@@ -145,3 +145,12 @@ Simula una fila de vehículos que pasan de forma consecutiva por la cabina.
 *   `calcularTarifa("auto", 18, true)` 👉 Retorna: `300` (Tarifa base, al ser feriado no aplica hora pico).
 *   `calcularTarifa("camion", 12, false)` 👉 Retorna: `600` (Tarifa base, hora no pico).
 
+---
+
+## 💻 Taller de Git Masivo: SmartPortal Colaborativo
+Hoy en el aula realizaremos un taller en vivo trabajando todos juntos sobre un mismo repositorio remoto en GitHub utilizando ramas (*branches*) y resolviendo conflictos.
+
+👉 Toda la información, asignación de roles y las instrucciones específicas para cada computadora están dentro de la carpeta:  
+[**`actividad-git/`**](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/README.md)
+
+

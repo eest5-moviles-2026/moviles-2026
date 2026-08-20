@@ -55,4 +55,4 @@ Buscá el comentario `<!-- [PC 1] Agregá tu bloque de créditos abajo de este c
 ---
 
 ## 🏁 Siguiente Paso:
-Cuando termines de guardar los archivos, hacé commit en tu terminal y subí la rama a GitHub como indica el paso 2 de la [`actividad-git.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git.md).
+Cuando termines de guardar los archivos, hacé commit en tu terminal y subí la rama a GitHub como indica el paso 2 de la [`README.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/actividad-git/README.md).
