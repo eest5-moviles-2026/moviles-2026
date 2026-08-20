@@ -110,7 +110,7 @@ Al finalizar, debés crear un archivo `README.md` formateado en Markdown explica
 
 ## 🚀 Desafío Semanal Obligatorio: Peaje Inteligente (Telepase)
 
-Este ejercicio es de carácter obligatorio y deberá ser presentado en la próxima clase. Resolverlo en un archivo JavaScript llamado `peaje.js` dentro de esta carpeta, y vincularlo en el archivo `index.html` provisto.
+Este ejercicio es de carácter obligatorio y deberá ser presentado en la próxima clase. Resolverlo en un archivo JavaScript llamado `peaje.js` dentro de esta carpeta (pueden probar su ejecución en la consola del desarrollador F12 del navegador o mediante Node.js).
 
 ### Consigna:
 Escribir un script que implemente dos funciones principales para simular la facturación automática de una cabina de peaje inteligente.
