@@ -7,7 +7,7 @@
 ## 🛠️ Tareas a realizar en tu rama `feature-pc3`:
 
 ### 1. Desarrollar el HTML (`index.html`):
-Buscá el comentario `<!-- [PC 3] AGREGÁ TU WIDGET DE ASISTENCIA MOCK ABAJO DE ESTE COMENTARIO -->`. Debés programar allí una tarjeta que cumpla con los siguientes requisitos:
+Buscá el comentario `<!-- [PC 2 y PC 3] ¡ESPACIO DE CONFLICTO! AGREGUEN SU WIDGET DEBAJO DE ESTA LÍNEA -->`. Debés programar allí una tarjeta que cumpla con los siguientes requisitos:
 1. Una etiqueta `<section>` contenedora con las clases `widget-card` y `widget-attendance`.
 2. Adentro, un título `<h3>` que diga `📊 Asistencia`.
 3. Un párrafo `<p>` con la clase `percentage` que muestre el valor `94%`.

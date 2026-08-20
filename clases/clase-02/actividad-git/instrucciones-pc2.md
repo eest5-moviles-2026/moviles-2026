@@ -6,7 +6,7 @@
 ## 🛠️ Tareas a realizar en tu rama `feature-pc2`:
 
 ### 1. Desarrollar el HTML (`index.html`):
-Buscá el comentario `<!-- [PC 2] AGREGÁ TU WIDGET DE ESTADO DEL LAB ABAJO DE ESTE COMENTARIO -->`. Debés programar allí una tarjeta que cumpla con los siguientes requisitos:
+Buscá el comentario `<!-- [PC 2 y PC 3] ¡ESPACIO DE CONFLICTO! AGREGUEN SU WIDGET DEBAJO DE ESTA LÍNEA -->`. Debés programar allí una tarjeta que cumpla con los siguientes requisitos:
 1. Una etiqueta `<section>` contenedora con las clases `widget-card` and `widget-status`.
 2. Adentro, un título `<h3>` que diga `💻 Estado del Lab`.
 3. Un contenedor `<div>` con la clase `status-indicator`. Adentro debe tener:
