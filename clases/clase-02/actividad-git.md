@@ -1,88 +1,120 @@
-# Actividad Guiada: Taller de Git Masivo (Simulación en Vivo)
+# Actividad Grupal: Taller de Git Branches (SmartPortal)
 **Materia:** Desarrollo de Software para Plataformas Móviles  
-**Clase 02:** Git Colaborativo y Resolución de Conflictos
+**Clase 02:** Trabajo Colaborativo en Equipo y Resolución de Conflictos
 
-En este taller trabajaremos las 5 computadoras del laboratorio sobre el **mismo repositorio remoto en GitHub** que creará el docente. Cada equipo (PC 1 a PC 5) tendrá tareas específicas asignadas paso a paso. Nos detendremos después de cada paso a evaluar qué ocurrió en la terminal.
-
----
-
-## 📋 Asignación de Equipos y Roles
-*   **PC 1:** Estructura Inicial (HTML5 Base)
-*   **PC 2:** Header y Diseño Superior
-*   **PC 3:** Contenido Principal (Opción A)
-*   **PC 4:** Footer y Diseño Inferior
-*   **PC 5:** Contenido Principal (Opción B - Conflicto)
+En esta actividad práctica, las 5 computadoras del laboratorio trabajaremos sobre el **mismo repositorio remoto en GitHub** creado por el docente. Simularemos un equipo de desarrollo profesional integrando características de forma paralela mediante **ramas (branches)**, aprendiendo a resolver conflictos de fusión (*Merge Conflicts*).
 
 ---
 
-## 🏁 Paso 0: Clonar el Repositorio Compartido
-El docente creará el repositorio `desafio-git-grupal` y les dará acceso. Cada PC clonará la carpeta en su disco local `C:\Proyectos-Estudiantes\...`:
-```bash
-git clone [URL-DEL-REPO-COMPARTIDO]
-cd desafio-git-grupal
-```
-*Configuren su firma local para este proyecto:*
-```bash
-git config user.name "PC [Número de PC]"
-git config user.email "pc[N]@example.com"
-```
+## 👥 Roles y Tareas de los Equipos
+
+Cada computadora tiene una tarea específica asignada en archivos individuales dentro de esta carpeta:
+*   **PC 1:** Ver [`instrucciones-pc1.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/instrucciones-pc1.md)
+*   **PC 2:** Ver [`instrucciones-pc2.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/instrucciones-pc2.md)
+*   **PC 3:** Ver [`instrucciones-pc3.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/instrucciones-pc3.md)
+*   **PC 4:** Ver [`instrucciones-pc4.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/instrucciones-pc4.md)
+*   **PC 5:** Ver [`instrucciones-pc5.md`](file:///home/axel/Escritorio/Clases/moviles-2026/clases/clase-02/instrucciones-pc5.md)
 
 ---
 
-## 🛣️ Fase 1: Creación y Sincronización en Paralelo (Paso a Paso)
+## 🏁 Paso 1: Clonar y crear tu propia rama (Branch)
 
-### 🔹 Paso 1 (Solo PC 1)
-1. **PC 1** crea el archivo `index.html` con una estructura básica HTML5 vacía.
-2. Hace commit y push:
+1. Abran la terminal Git Bash dentro de su directorio de grupo (`C:\Proyectos-Estudiantes\...`) y clonen el repositorio grupal compartido por el docente:
+   ```bash
+   git clone [URL-DEL-REPO-COMPARTIDO]
+   cd desafio-git-grupal
+   ```
+2. Configuren su firma local para este proyecto específico (así el docente sabe quién hizo qué commit):
+   ```bash
+   git config user.name "PC [Número de PC]"
+   git config user.email "pc[N]@example.com"
+   ```
+3. Creen una rama de desarrollo para su computadora y muévanse a ella:
+   ```bash
+   git checkout -b feature-pc[N]
+   ```
+   *(Reemplacen `[N]` por el número de su computadora. Ej: `feature-pc3`)*.
+
+---
+
+## 🛠️ Paso 2: Desarrollar su Tarea y hacer Push
+
+1. Abran el proyecto en VS Code (`code .`).
+2. Sigan detalladamente las instrucciones de programación de su archivo `instrucciones-pc[N].md`.
+3. Al terminar y validar que sus cambios guardados no rompan la estructura, hagan commit y suban su rama a GitHub:
+   ```bash
+   git add .
+   git commit -m "feat: implementar widget e integrantes de PC [N]"
+   git push -u origin feature-pc[N]
+   ```
+4. 🛑 **Pausa de la Clase:** Esperen a que todos los equipos hayan subido sus respectivas ramas a GitHub antes de avanzar.
+
+---
+
+## 🔄 Paso 3: Integración Sincrónica y Auto-merge
+
+Ahora integraremos las ramas a la rama principal `main`.
+
+### 🔹 Turno de la PC 1 y PC 4
+1. **PC 1** y **PC 4** vuelven a `main`, se bajan los últimos cambios del servidor e integran su rama local:
+   ```bash
+   git checkout main
+   git pull origin main
+   git merge feature-pc[N]
+   git push origin main
+   ```
+2. Como editaron secciones separadas de `index.html`, las fusiones se resolverán automáticamente (*Auto-merge*).
+3. 🛑 **Pausa de la Clase:** Observen cómo GitHub unió ambos códigos en `main`. Las **PCs 2, 3 y 5** ejecutan `git pull origin main` para tener todo al día.
+
+---
+
+## 💥 Paso 4: Fusión con Conflictos (HTML & CSS)
+
+### 🔹 Turno de la PC 2
+1. **PC 2** vuelve a `main`, hace `pull`, integra su rama y la sube:
+   ```bash
+   git checkout main
+   git pull origin main
+   git merge feature-pc2
+   git push origin main
+   ```
+
+### 🔹 Turno de la PC 3 (Conflicto HTML)
+1. **PC 3** vuelve a `main`, hace `pull` y ejecuta:
+   ```bash
+   git checkout main
+   git pull origin main
+   git merge feature-pc3
+   ```
+2. **¡BUM! Conflicto en `index.html`.** Git detendrá la consola porque PC 2 y PC 3 intentaron agregar su widget en el mismo lugar físico de la grilla.
+3. **Resolución:** Abran `index.html` en VS Code, analicen el conflicto grupalmente, editen el código para que queden ambas tarjetas ordenadas, borren las marcas de conflicto (`<<<<<<<`, `=======`, `>>>>>>>`), guarden y confirmen:
    ```bash
    git add index.html
-   git commit -m "feat: crear estructura html base"
-   git push
+   git commit -m "resolve: unificar grilla de PC 2 y PC 3"
+   git push origin main
    ```
-3. 🛑 **Pausa de la Clase:** El docente verifica que el archivo esté en GitHub. **Las PCs 2, 3, 4 y 5** ejecutan en su consola `git pull` para bajarse el archivo de la PC 1.
 
-### 🔹 Paso 2 (PC 2 y PC 4 trabajando en simultáneo)
-1. **PC 2** abre `index.html` y agrega un encabezado `<header>` con el título de la app dentro del `<body>`.
-2. **PC 4** abre `index.html` y agrega un pie de página `<footer>` al final del `<body>`.
-3. Ambos guardan, hacen `add` y `commit` en su máquina:
+### 🔹 Turno de la PC 5 (Conflicto CSS)
+1. **PC 5** hace el mismo proceso:
    ```bash
-   git add index.html
-   git commit -m "feat: agregar seccion"
+   git checkout main
+   git pull origin main
+   git merge feature-pc5
    ```
-4. **El Desafío:**
-   * **PC 2** ejecuta `git push` primero. Sube con éxito.
-   * **PC 4** ejecuta `git push` después. Será rebotado con error *[rejected]*.
-5. 🛑 **Pausa de la Clase:** ¿Por qué rebotó a la PC 4 si escribieron cosas distintas? El docente lo explica en el pizarrón.
-6. **Resolución de PC 4:** Ejecuta `git pull`. Git resolverá la fusión automáticamente (*Auto-merge*) porque modificaron partes distintas del archivo. Luego, PC 4 hace `git push`.
-7. **Actualización:** Las demás PCs (1, 2, 3 y 5) hacen `git pull` para tener todo al día.
+2. **¡BUM! Conflicto en `style.css`.** Chocará la variable del color de acento modificada por PC 3 y PC 5.
+3. **Resolución:** Abran `style.css` en VS Code, elijan un color definitivo (o creen uno nuevo combinándolos), limpien el archivo y completen el ciclo:
+   ```bash
+   git add style.css
+   git commit -m "resolve: unificar variable de color primario"
+   git push origin main
+   ```
 
 ---
 
-## 💥 Fase 2: Choque Frontal y Resolución de Conflictos
-
-### 🔹 Paso 3 (PC 3 y PC 5 editando la misma línea)
-1. Todas las PCs tienen el archivo actualizado.
-2. En el archivo `index.html`, en el medio del `<body>` (por ejemplo, en la línea 12), hay una sección `<main>`.
-3. **PC 3** agrega en la línea 12: `<p>Desarrollado con cariño por la PC 3</p>`. Guarda y hace commit.
-4. **PC 5** agrega en la **misma línea 12**: `<p>Creado de forma colaborativa por la PC 5</p>`. Guarda y hace commit.
-5. **El Choque:**
-   * **PC 3** ejecuta `git push` primero. Sube limpio.
-   * **PC 5** ejecuta `git push` y es rechazado.
-6. **PC 5** ejecuta `git pull` para intentar solucionar el rechazo... y la terminal avisa:
-   `CONFLICT (content): Merge conflict in index.html`
-7. 🛑 **Pausa de la Clase:** Analizamos el conflicto en la pantalla de la PC 5 y en el pizarrón. ¿Qué significan `<<<<<<<`, `=======` y `>>>>>>>`?
-
-### 🔹 Paso 4: Resolver el Conflicto (PC 5)
-1. **PC 5** abre `index.html` en VS Code.
-2. Combina el código para conservar las firmas de ambos equipos, borrando por completo las líneas inyectadas por Git. El resultado debe quedar limpio, por ejemplo:
-   ```html
-   <p>Desarrollado con cariño por la PC 3 y la PC 5</p>
-   ```
-3. Guarda el archivo.
-4. Completa la fusión en la terminal:
+## 🏁 Paso 5: El Cierre
+1. Todas las PCs se cambian a `main` y ejecutan:
    ```bash
-   git add index.html
-   git commit -m "resolve: unificar firmas de PC 3 y PC 5"
-   git push
+   git checkout main
+   git pull origin main
    ```
-5. **Finalización:** El resto de las PCs ejecutan `git pull` y comprueban el resultado final.
+2. Abran `index.html` en sus navegadores. Verán el SmartPortal completo con las 5 tarjetas armadas, el color acento integrado y las firmas de todos los integrantes visibles. ¡Felicidades!
