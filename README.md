@@ -36,6 +36,35 @@ Para participar de las clases prácticas, los estudiantes necesitarán:
 
 ---
 
+## 💻 Protocolo de Git en el Laboratorio (¡Obligatorio!)
+Dado que las computadoras del laboratorio son compartidas, para evitar que otros estudiantes utilicen tus credenciales o pisen tus entregas, debés seguir este protocolo en cada clase:
+
+### 1. Ubicación del Workspace
+Cloná tu repositorio únicamente dentro de la carpeta asignada a tu grupo en el disco local `C:\`:
+*   **Grupo Jueves:** `C:\Proyectos-Estudiantes\Grupo-Jueves\tu-nombre-de-usuario\`
+*   **Grupo Viernes:** `C:\Proyectos-Estudiantes\Grupo-Viernes\tu-nombre-de-usuario\`
+
+### 2. Firma Local de Commits (No Global)
+No uses `--global` al configurar tu nombre y correo en la terminal de la escuela. En su lugar, entra a la carpeta de tu repositorio clonado y configuralo **localmente**:
+```bash
+cd C:\Proyectos-Estudiantes\Grupo-[Día]\tu-repositorio
+git config user.name "Tu Nombre Completo"
+git config user.email "tu-email-registrado-en-github@example.com"
+```
+
+### 3. Autenticación con GitHub CLI (`gh`)
+*   **Al iniciar la clase:** Iniciá tu sesión en la terminal ejecutando:
+    ```bash
+    gh auth login
+    ```
+    Seleccioná `GitHub.com`, protocolo `HTTPS`, confirmá con `Yes` para autenticar Git, elegí `Login with a web browser`, copiá el código de 8 dígitos y presiona Enter para autorizar en el navegador.
+*   **Al finalizar la clase:** Cerrá tu sesión obligatoriamente para dejar la máquina limpia:
+    ```bash
+    gh auth logout
+    ```
+
+---
+
 ## ⚖️ Criterios de Evaluación
 La materia se evalúa de forma continua a través de:
 *   **Participación y Trabajo en Taller:** Actitud proactiva, resolución colaborativa de bugs y avance clase a clase.
