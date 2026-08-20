@@ -17,19 +17,40 @@ Cada computadora tiene una tarea específica asignada en archivos individuales d
 
 ---
 
-## 🏁 Paso 1: Clonar y crear tu propia rama (Branch)
+## 🏁 Paso 0: Creación del Repositorio Compartido (Solo PC 1)
 
-1. Abran la terminal Git Bash dentro de su directorio de grupo (`C:\Proyectos-Estudiantes\...`) y clonen el repositorio grupal compartido por el docente:
+El equipo de la **PC 1** creará el repositorio de trabajo grupal. En su computadora, realicen lo siguiente:
+1. Copien únicamente los archivos `index.html` y `style.css` de la carpeta de la materia a un nuevo directorio limpio en su escritorio llamado `desafio-git-grupal`.
+2. Abran la terminal en esa carpeta y ejecuten:
    ```bash
-   git clone [URL-DEL-REPO-COMPARTIDO]
+   git init
+   git add .
+   git commit -m "initial commit: plantilla base de SmartPortal"
+   ```
+3. Creen un repositorio público en su cuenta de GitHub llamado `desafio-git-grupal` y súbanlo:
+   ```bash
+   git remote add origin https://github.com/[usuario-pc1]/desafio-git-grupal.git
+   git branch -M main
+   git push -u origin main
+   ```
+4. Vayan a `Settings` -> `Collaborators` en su repositorio y agreguen como colaboradores a las cuentas de GitHub de las **PCs 2, 3, 4 y 5**.
+
+---
+
+## 🏁 Paso 1: Clonar y crear tu propia rama (PC 2, 3, 4 y 5)
+
+Una vez que acepten la invitación de colaborador en sus cuentas de GitHub:
+1. Abran la terminal Git Bash en su directorio de grupo (`C:\Proyectos-Estudiantes\...`) y clonen el repositorio creado por la **PC 1**:
+   ```bash
+   git clone https://github.com/[usuario-pc1]/desafio-git-grupal.git
    cd desafio-git-grupal
    ```
-2. Configuren su firma local para este proyecto específico (así el docente sabe quién hizo qué commit):
+2. Configuren su firma local (así el docente sabe quién hizo cada commit):
    ```bash
    git config user.name "PC [Número de PC]"
    git config user.email "pc[N]@example.com"
    ```
-3. Creen una rama de desarrollo para su computadora y muévanse a ella:
+3. Creen una rama de desarrollo local y muévanse a ella:
    ```bash
    git checkout -b feature-pc[N]
    ```
