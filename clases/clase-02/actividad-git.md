@@ -1,86 +1,88 @@
-# Actividad Grupal: El Embotellamiento de Git (Tránsito en Main)
+# Actividad Guiada: Taller de Git Masivo (Simulación en Vivo)
 **Materia:** Desarrollo de Software para Plataformas Móviles  
-**Clase 02:** Taller de Git Colaborativo y Resolución de Conflictos
+**Clase 02:** Git Colaborativo y Resolución de Conflictos
 
-En esta actividad práctica trabajaremos las 5 computadoras del laboratorio sobre un **mismo repositorio remoto en GitHub**. Aprenderemos a resolver los dos problemas más comunes del trabajo en equipo: la sincronización de archivos diferentes y el temido **conflicto de fusión (Merge Conflict)** cuando dos personas editan el mismo archivo al mismo tiempo.
-
----
-
-## 📋 Requisitos Previos
-1. El docente les compartirá el enlace al repositorio grupal de la clase (ej: `https://github.com/eest5-moviles-2026/desafio-git-grupal`).
-2. Una sola persona por computadora abrirá la terminal Git Bash en la carpeta asignada a su grupo (en el disco local `C:\Proyectos-Estudiantes\...`).
-3. Clonen el repositorio y entren a su carpeta:
-   ```bash
-   git clone [URL-DEL-REPO-COMPARTIDO]
-   cd desafio-git-grupal
-   ```
-4. Configuren su firma de commit local (no global):
-   ```bash
-   git config user.name "PC [Número de PC] - Grupo [Día]"
-   git config user.email "alumno-pc[N]@example.com"
-   ```
+En este taller trabajaremos las 5 computadoras del laboratorio sobre el **mismo repositorio remoto en GitHub** que creará el docente. Cada equipo (PC 1 a PC 5) tendrá tareas específicas asignadas paso a paso. Nos detendremos después de cada paso a evaluar qué ocurrió en la terminal.
 
 ---
 
-## 🕹️ Fase 1: Sincronización en Paralelo (Aprender a usar `git pull`)
+## 📋 Asignación de Equipos y Roles
+*   **PC 1:** Estructura Inicial (HTML5 Base)
+*   **PC 2:** Header y Diseño Superior
+*   **PC 3:** Contenido Principal (Opción A)
+*   **PC 4:** Footer y Diseño Inferior
+*   **PC 5:** Contenido Principal (Opción B - Conflicto)
 
-En esta fase, cada computadora tiene asignada una línea específica en el archivo `equipo.md`.
+---
 
-1. Abran el archivo `equipo.md` en VS Code.
-2. Modifiquen **únicamente la línea asignada a su computadora** reemplazando el texto `(Esperando conexión...)` por el nombre de los integrantes sentados en esa máquina. **No toquen las líneas de las demás PCs.**
-3. Guarden el archivo.
-4. En la terminal preparen y confirmen el cambio:
+## 🏁 Paso 0: Clonar el Repositorio Compartido
+El docente creará el repositorio `desafio-git-grupal` y les dará acceso. Cada PC clonará la carpeta en su disco local `C:\Proyectos-Estudiantes\...`:
+```bash
+git clone [URL-DEL-REPO-COMPARTIDO]
+cd desafio-git-grupal
+```
+*Configuren su firma local para este proyecto:*
+```bash
+git config user.name "PC [Número de PC]"
+git config user.email "pc[N]@example.com"
+```
+
+---
+
+## 🛣️ Fase 1: Creación y Sincronización en Paralelo (Paso a Paso)
+
+### 🔹 Paso 1 (Solo PC 1)
+1. **PC 1** crea el archivo `index.html` con una estructura básica HTML5 vacía.
+2. Hace commit y push:
    ```bash
-   git add equipo.md
-   git commit -m "feat: registrar integrantes de la PC [Número de tu PC]"
-   ```
-5. **El Embotellamiento:** A la cuenta de 3 del docente, **todas las computadoras deben intentar hacer `git push` a la vez**.
-6. **¿Qué va a pasar?**
-   * Solo una PC logrará subir sus cambios. Las otras 4 recibirán un mensaje de rechazo de GitHub (*[rejected] - non-fast-forward*).
-7. **La Solución:** Las PCs rechazadas deben ejecutar:
-   ```bash
-   git pull
-   ```
-   * *Nota:* Como cada PC editó una línea diferente, Git fusionará los cambios automáticamente. Si se abre un editor de texto en consola (Vim) pidiendo un mensaje de fusión, guarden y salgan (presionen `Esc`, escriban `:wq` y den `Enter`).
-8. Una vez hecho el `pull` con éxito, vuelvan a intentar el push:
-   ```bash
+   git add index.html
+   git commit -m "feat: crear estructura html base"
    git push
    ```
-   *(Repitan el proceso de `pull` y luego `push` por turnos hasta que todas las PCs hayan subido sus integrantes).*
+3. 🛑 **Pausa de la Clase:** El docente verifica que el archivo esté en GitHub. **Las PCs 2, 3, 4 y 5** ejecutan en su consola `git pull` para bajarse el archivo de la PC 1.
+
+### 🔹 Paso 2 (PC 2 y PC 4 trabajando en simultáneo)
+1. **PC 2** abre `index.html` y agrega un encabezado `<header>` con el título de la app dentro del `<body>`.
+2. **PC 4** abre `index.html` y agrega un pie de página `<footer>` al final del `<body>`.
+3. Ambos guardan, hacen `add` y `commit` en su máquina:
+   ```bash
+   git add index.html
+   git commit -m "feat: agregar seccion"
+   ```
+4. **El Desafío:**
+   * **PC 2** ejecuta `git push` primero. Sube con éxito.
+   * **PC 4** ejecuta `git push` después. Será rebotado con error *[rejected]*.
+5. 🛑 **Pausa de la Clase:** ¿Por qué rebotó a la PC 4 si escribieron cosas distintas? El docente lo explica en el pizarrón.
+6. **Resolución de PC 4:** Ejecuta `git pull`. Git resolverá la fusión automáticamente (*Auto-merge*) porque modificaron partes distintas del archivo. Luego, PC 4 hace `git push`.
+7. **Actualización:** Las demás PCs (1, 2, 3 y 5) hacen `git pull` para tener todo al día.
 
 ---
 
-## 💥 Fase 2: Choque Masivo (Resolución de Conflictos)
+## 💥 Fase 2: Choque Frontal y Resolución de Conflictos
 
-Ahora forzaremos un conflicto de código real donde dos o más computadoras editan exactamente la misma línea del mismo archivo.
+### 🔹 Paso 3 (PC 3 y PC 5 editando la misma línea)
+1. Todas las PCs tienen el archivo actualizado.
+2. En el archivo `index.html`, en el medio del `<body>` (por ejemplo, en la línea 12), hay una sección `<main>`.
+3. **PC 3** agrega en la línea 12: `<p>Desarrollado con cariño por la PC 3</p>`. Guarda y hace commit.
+4. **PC 5** agrega en la **misma línea 12**: `<p>Creado de forma colaborativa por la PC 5</p>`. Guarda y hace commit.
+5. **El Choque:**
+   * **PC 3** ejecuta `git push` primero. Sube limpio.
+   * **PC 5** ejecuta `git push` y es rechazado.
+6. **PC 5** ejecuta `git pull` para intentar solucionar el rechazo... y la terminal avisa:
+   `CONFLICT (content): Merge conflict in index.html`
+7. 🛑 **Pausa de la Clase:** Analizamos el conflicto en la pantalla de la PC 5 y en el pizarrón. ¿Qué significan `<<<<<<<`, `=======` y `>>>>>>>`?
 
-1. Todas las computadoras deben hacer un último `git pull` para estar al día.
-2. Abran `equipo.md`. Vayan a la **última línea** del archivo (abajo de todo).
-3. Escriban en esa misma línea una propuesta de idea para el proyecto final de la materia.
-4. Guarden el archivo, prepárenlo y hagan el commit:
-   ```bash
-   git add equipo.md
-   git commit -m "idea: propuesta de proyecto final"
+### 🔹 Paso 4: Resolver el Conflicto (PC 5)
+1. **PC 5** abre `index.html` en VS Code.
+2. Combina el código para conservar las firmas de ambos equipos, borrando por completo las líneas inyectadas por Git. El resultado debe quedar limpio, por ejemplo:
+   ```html
+   <p>Desarrollado con cariño por la PC 3 y la PC 5</p>
    ```
-5. A la de 3, vuelvan a hacer `git push` todos juntos.
-6. El primero subirá con éxito. El resto recibirá rechazo.
-7. Las PCs rechazadas deben hacer:
+3. Guarda el archivo.
+4. Completa la fusión en la terminal:
    ```bash
-   git pull
+   git add index.html
+   git commit -m "resolve: unificar firmas de PC 3 y PC 5"
+   git push
    ```
-8. **¡Conflicto de Merge!** La terminal avisará que hay un conflicto en `equipo.md` y detendrá la fusión.
-9. **¿Cómo solucionarlo?**
-   * Abran `equipo.md` en VS Code. Verán líneas extrañas con marcas de conflicto:
-     * `<<<<<<< HEAD` (Tus cambios locales).
-     * `=======` (Separador).
-     * `>>>>>>> [código-de-commit]` (Los cambios que vienen de GitHub).
-   * Usen las opciones flotantes de VS Code (*Accept Current Change*, *Accept Incoming Change* o *Accept Both*) para quedarse con ambas ideas de proyecto.
-   * Limpien las marcas de conflicto (los símbolos `<<<<<<<`, `=======` y `>>>>>>>` deben borrarse por completo).
-   * Guarden el archivo.
-10. Finalicen la fusión en la terminal:
-    ```bash
-    git add equipo.md
-    git commit -m "resolve: unificar propuestas de proyecto"
-    git push
-    ```
-    *(A medida que las PCs van subiendo su resolución, la siguiente PC tendrá que hacer `pull` y resolver un conflicto con aún más propuestas añadidas. ¡Buena suerte!)*
+5. **Finalización:** El resto de las PCs ejecutan `git pull` y comprueban el resultado final.
