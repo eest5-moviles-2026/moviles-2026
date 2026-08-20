@@ -54,19 +54,37 @@ git push
 
 ---
 
-## 2. Comandos Útiles de Consola
+## 2. Glosario de comandos de Git (¿Para qué sirve cada uno?)
 
-*   `pwd`: Muestra la ruta de la carpeta donde estás parado actualmente en la terminal.
-*   `ls` (o `dir` en Windows): Muestra la lista de archivos y carpetas dentro de tu directorio actual.
-*   `cd ..`: Retrocede un nivel de carpeta (sale de la carpeta actual hacia su carpeta contenedora).
-*   `git diff`: Muestra exactamente qué líneas agregaste o borraste en tus archivos antes de hacer un `git add`.
+Para entender a fondo qué hace la terminal cuando ejecutás cada instrucción, acá tenés la explicación técnica de cada comando de Git:
+
+*   **`git clone [URL]`**: Descarga por primera vez un repositorio existente desde GitHub a tu computadora local. Crea una carpeta con todos los archivos y la configuración de Git ya vinculada.
+*   **`git status`**: Te muestra el estado actual de tu directorio de trabajo. Te avisa qué archivos fueron modificados, cuáles se crearon nuevos (sin seguimiento) y cuáles ya están preparados en el área de espera (*staging*) listos para confirmarse. **Es el comando que más tenés que usar para evitar subir archivos no deseados.**
+*   **`git add [archivo]`** (o `git add .`): Mueve tus cambios del directorio de trabajo al área de espera (*Staging Area*). Es como preparar las cartas dentro de un sobre antes de cerrarlo y enviarlo. El punto `.` indica "agregar todo lo que haya cambiado".
+*   **`git commit -m "[mensaje]"`**: Registra permanentemente los cambios que preparaste con `git add` en el historial local del proyecto. Guarda una versión (un "commit") con una etiqueta descriptiva (el mensaje) para saber qué se hizo en ese paso.
+*   **`git push`**: Sube todos los commits locales confirmados desde tu computadora a la rama correspondiente en el servidor remoto de GitHub. Es el paso final que publica tu código en la nube.
+*   **`git pull`**: Trae y fusiona los últimos cambios que estén en el servidor de GitHub a tu copia local. Sirve para actualizar tu computadora si vos u otra persona subieron cambios desde otro lado.
+*   **`git log`**: Muestra el historial completo de commits (versiones guardadas) en orden cronológico inverso, detallando autor, fecha, código identificador y mensaje de cada commit.
+*   **`git diff`**: Compara tus archivos actuales con la última versión guardada. Te muestra línea por línea qué agregaste (en verde con un `+`) o qué borraste (en rojo con un `-`) antes de hacer `git add`.
+
+---
+
+## 3. Comandos Útiles de Navegación de Consola
+
+Antes de usar Git, necesitás saber moverte por las carpetas en la terminal:
+
+*   **`pwd`**: Muestra la ruta completa de la carpeta actual donde estás parado en la terminal (ej: `/c/Proyectos-Estudiantes/Grupo-Jueves/mi-repo`).
+*   **`ls`** (o `dir` en Windows): Muestra la lista de todos los archivos y carpetas que están adentro del directorio donde estás parado.
+*   **`cd [carpeta]`**: Entra a la carpeta especificada (ej: `cd clases`).
+*   **`cd ..`**: Retrocede un nivel de carpetas. Te saca de la carpeta actual y te deja en la carpeta de nivel superior.
 
 ---
 
 ## ⚠️ Recordatorio Importante para Aulas Compartidas
 
-Recordá que al terminar la clase, debés cerrar tu sesión en GitHub CLI para proteger tu cuenta y evitar que el grupo del día siguiente sobreescriba tu repositorio:
+Al finalizar la clase, debés cerrar tu sesión en GitHub CLI para proteger tu cuenta de que otros estudiantes de otros grupos modifiquen tu repositorio:
 ```bash
 gh auth logout
 ```
 *(Confirmar presionando `y` y luego `Enter`)*.
+
