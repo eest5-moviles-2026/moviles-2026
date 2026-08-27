@@ -3,6 +3,9 @@
 
 Este repositorio contiene la planificación, recursos didácticos, códigos de ejemplo y guías prácticas para la materia dictada por el Prof. **Axel Castellano Gutiérrez** durante el ciclo lectivo 2026.
 
+> [!IMPORTANT]
+> 📢 **AULA VIRTUAL (Google Classroom):** Unite a nuestra plataforma de Google Classroom para recibir anuncios oficiales, entregar tareas y ver calificaciones a través del siguiente enlace: [**Invitación a Google Classroom (Código de clase: `me5dspnv`)**](https://classroom.google.com/c/ODY5MTg3OTQ3NzM0?cjc=me5dspnv).
+
 ---
 
 ## 📌 Enfoque Pedagógico y Tecnológico
