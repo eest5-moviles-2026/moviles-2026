@@ -377,16 +377,20 @@ Funciones autoejecutables que se corren en el instante en que el intérprete las
 ---
 
 #### 8. Función Generadora (Generator Function) — `[AVANZADA / NICHO]`
-Funciones especiales que pueden pausar y reanudar su ejecución devolviendo iteradores.
+Funciones especiales que pueden pausar y reanudar su ejecución devolviendo iteradores. Son ideales para procesar flujos de datos **bajo demanda (Lazy Evaluation)** sin sobrecargar la memoria.
+
+*   **Caso de uso en Móviles:** Es una herramienta de optimización clave. Por ejemplo, en un **Paginado Infinito (Infinite Scroll)** de una red social, en lugar de descargar miles de posts de golpe y agotar los recursos del celular, la función generadora entrega los posts en lotes pequeños, pausándose con un `yield` y esperando a que el usuario haga scroll para solicitar el siguiente lote llamando a `.next()`.
+
 ```javascript
 function* creadorDeIds() {
     let id = 1;
-    while (true) {
-        yield id++;
+    while (true) { // Este bucle infinito NO cuelga la computadora
+        yield id++; // Pausa temporal que congela el estado
     }
 }
 const gen = creadorDeIds();
-console.log(gen.next().value);
+console.log(gen.next().value); // Devuelve 1 y se congela
+console.log(gen.next().value); // Devuelve 2 y se vuelve a congelar
 ```
 > ❓ **Análisis en clase:** ¿Qué ocurre si volvemos a ejecutar `console.log(gen.next().value)`? ¿Cómo explicarían el hecho de tener un bucle `while (true)` infinito aquí sin que se cuelgue la computadora?
 
