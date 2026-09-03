@@ -1,128 +1,109 @@
-# Guía Práctica de Clase 04: Proyecto Integrador "TechStore Móvil"
+# Guía Práctica de Clase 04: Proyecto Integrador "TechStore Móvil" (ES Modules)
 **Materia:** Desarrollo de Software para Plataformas Móviles (7° Año)  
 **Clase 04:** De la Interfaz Local al Consumo de Servicios en Tiempo Real  
 **Profesor:** Axel Castellano Gutiérrez  
 
-En esta clase práctica construiremos una aplicación móvil real (**"TechStore Móvil"**) ubicada en la carpeta [`proyecto-integrador/`](./proyecto-integrador/). La práctica acompaña de forma sincronizada cada uno de los 4 bloques teóricos de la clase:
+En esta clase práctica construiremos una aplicación móvil real (**"TechStore Móvil"**) ubicada en la carpeta [`proyecto-integrador/`](./proyecto-integrador/).
 
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                   HILO CONDUCTOR DEL PROYECTO INTEGRADOR EN EL AULA                    │
-│                                                                                        │
-│   ⏱️ HORA 1: [BLOQUE 1] DOM y Eventos ─────► ⏱️ HORA 2: [BLOQUE 2] HOFs y ES6+        │
-│   (Modo oscuro, eventos táctiles y búsqueda) (Filtrar y calcular totales en memoria)   │
-│                                                                                        │
-│                                                                                        ▼
-│   ⏱️ HORA 4: [BLOQUE 4] Storage y Módulos ◄───── ⏱️ HORA 3: [BLOQUE 3] Fetch y Async  │
-│   (Persistir favoritos y modularizar)        (Conectar con la API y estados de UI)     │
-└────────────────────────────────────────────────────────────────────────────────────────┘
+---
+
+## 🏗️ Arquitectura Modular del Proyecto
+
+La aplicación está organizada en **4 módulos independientes con ECMAScript Modules (`export` / `import`)**:
+
+```text
+proyecto-integrador/
+├── index.html          # Maquetado semántico (<script type="module" src="./js/app.js">)
+├── styles.css          # Estilos móviles, CSS variables, Dark Mode y estados de UI
+└── js/
+    ├── app.js          # Orquestador principal (Eventos de la UI e inicialización)
+    ├── api.js          # Consumo de red con Fetch, Promise.all y async/await
+    ├── storage.js      # Persistencia en LocalStorage (parseo y guardado JSON)
+    └── ui.js           # Generación de tarjetas HTML, filtros con HOFs y métricas
 ```
 
 > [!IMPORTANT]
 > 🚀 **CÓMO TRABAJAR EN EL LABORATORIO:**
 > 1. Abrí la carpeta `clase-04/proyecto-integrador/` en VS Code.
-> 2. Iniciá `index.html` usando la extensión **Live Server** (para habilitar el protocolo `http://` requerido por los módulos de JS).
-> 3. Abrí el archivo `js/app.js` y completá el código a medida que avanzamos bloque a bloque.
+> 2. Iniciá `index.html` usando la extensión **Live Server** (para habilitar el protocolo `http://` requerido por los módulos de JS y CORS).
+> 3. Completá el código guiado con `// TODO:` en los archivos correspondientes a medida que avanzamos bloque a bloque.
 
 ---
 
-## 📑 Índice de la Práctica
-
-* [Bloque 1 (Hora 1): La Capa Visual (El DOM y Manejo de Eventos)](#-bloque-1-hora-1-la-capa-visual-el-dom-y-manejo-de-eventos)
-* [Bloque 2 (Hora 2): Manipulación de Datos en Memoria (HOFs y ES6+)](#-bloque-2-hora-2-manipulación-de-datos-en-memoria-hofs-y-es6)
-* [Bloque 3 (Hora 3): Comunicación Externa y Asincronismo (HTTP y Fetch)](#-bloque-3-hora-3-comunicación-externa-y-asincronismo-http-y-fetch)
-* [Bloque 4 (Hora 4): Persistencia Local (LocalStorage) y Modularización](#-bloque-4-hora-4-persistencia-local-localstorage-y-modularización)
-* [Criterios de Evaluación y Entrega](#-criterios-de-evaluación-y-entrega)
-
----
-
-## ⏱️ Bloque 1 (Hora 1): La Capa Visual (El DOM y Manejo de Eventos)
+## ⏱️ Bloque 1 (Hora 1): La Capa Visual y Eventos (`js/app.js`)
 
 > 🛑 **PAUSA EN EL AULA 1:** Dar vida a la estructura visual y controles de la aplicación.
 
-### 🎯 Consignas del Bloque 1:
+### 🎯 Consignas:
 1. **Selección de Elementos del DOM:**
    * Utilizar `document.querySelector` y `document.querySelectorAll` para capturar los nodos de la interfaz (botones de filtro, buscador, panel de catálogo, botón de tema, badges).
 2. **Interruptor de Modo Oscuro:**
    * En el evento `'click'` de `#btn-tema`, alternar la clase `"dark-mode"` en el `document.body` utilizando `.classList.toggle()`.
-   * Cambiar el icono `#icono-tema` a `"☀️"` si el body está en modo oscuro o `"🌙"` si está en modo claro.
+   * Cambiar el icono `#icono-tema` a `"☀️"` si está oscuro o `"🌙"` si está claro.
 3. **Control de Filtros por Categoría:**
-   * Recorrer `botonesFiltro` con `.forEach()` y escuchar el evento `'click'`.
-   * Quitar la clase `"activo"` a todos los botones y agregársela únicamente al botón clickeado.
-   * Guardar la categoría en `categoriaActual = boton.dataset.categoria`.
+   * Recorrer `botonesFiltro` con `.forEach()`, gestionar la clase `"activo"` y actualizar la categoría seleccionada.
 4. **Buscador en Tiempo Real:**
-   * Escuchar el evento `'input'` en `#input-buscador` para que llame a la función `aplicarFiltros()`.
+   * Escuchar el evento `'input'` en `#input-buscador` para activar el filtrado en vivo.
 
 ---
 
-## ⏱️ Bloque 2 (Hora 2): Manipulación de Datos en Memoria (HOFs y ES6+)
+## ⏱️ Bloque 2 (Hora 2): Transformación de Datos en Memoria (`js/ui.js`)
 
-> 🛑 **PAUSA EN EL AULA 2:** Procesar y transformar los datos de productos sin mutar los originales.
+> 🛑 **PAUSA EN EL AULA 2:** Crear las funciones declarativas con HOFs y ES6+.
 
-### 🎯 Consignas del Bloque 2:
-1. **Función `crearTarjetaProductoHTML(producto)`:**
-   * Aplicar **Destructuring** para extraer `{ id, title, price, category, thumbnail, stock }` del objeto producto.
-   * Retornar el string HTML con Template Literals estructurado con la etiqueta `<article class="tarjeta-producto" data-id="${id}">`.
-2. **Función `filtrarProductos(lista, textoBusqueda, categoria)`:**
-   * Utilizar el método inmutable **`.filter()`** para retornar solo los productos cuyo nombre coincida con `textoBusqueda` y pertenezcan a la categoría seleccionada (o todas).
-3. **Función `calcularTotalCatalogo(lista)`:**
-   * Utilizar el método **`.reduce()`** para calcular el valor total acumulado en dólares de todos los productos visibles.
-4. **Función `aplicarFiltros()`:**
-   * Actualizar los contadores `#total-productos-visibles` y `#total-precio-acumulado`.
-   * Renderizar las tarjetas en `#contenedor-catalogo` utilizando **`.map().join('')`**.
-   * Si no hay productos que coincidan, mostrar el mensaje `#sin-resultados`.
+### 🎯 Consignas:
+1. **Generación de Tarjetas con Destructuring (`crearTarjetaProductoHTML`):**
+   * Extraer `{ id, title, price, category, thumbnail, stock }` desde el objeto producto.
+   * Retornar el string HTML de la tarjeta `<article class="tarjeta-producto">`.
+2. **Filtrado Declarativo con `.filter()` (`filtrarProductos`):**
+   * Filtrar por coincidencia de texto en el título (`.includes()`) y por coincidencia de categoría (o favoritos).
+3. **Cálculo de Métricas con `.reduce()` (`calcularTotalCatalogo`):**
+   * Acumular la suma de los precios de todos los productos visibles y retornar el total numérico.
 
 ---
 
-## ⏱️ Bloque 3 (Hora 3): Comunicación Externa y Asincronismo (HTTP y Fetch)
+## ⏱️ Bloque 3 (Hora 3): Consumo de API Externa (`js/api.js`)
 
-> 🛑 **PAUSA EN EL AULA 3:** Conectar la aplicación con una API REST en la nube.
+> 🛑 **PAUSA EN EL AULA 3:** Conectar la aplicación con la API de DummyJSON.
 
-### 🎯 Consignas del Bloque 3:
-1. **Función Asíncrona `descargarCatalogoAPI()`:**
-   * Declarar la función con la palabra clave `async`.
-   * Implementar la estructura **`try...catch`**.
-2. **Manejo de Estados de Interfaz (UX Móvil):**
-   * **Estado 1 (Loading ⏳):** Antes de iniciar la descarga, quitar la clase `"oculto"` a `#estado-loading` y ocultar los errores.
-   * **Petición con `fetch()`:** Consultar la URL `https://dummyjson.com/products?limit=12` configurando un timeout de 8 segundos con `AbortSignal.timeout(8000)`.
-   * **Validación Obligatoria:** Validar `if (!respuesta.ok) throw new Error(...)`.
-   * **Estado 2 (Éxito ✅):** Ocultar el loading, guardar los productos en `productosEnMemoria` y ejecutar `aplicarFiltros()`.
-   * **Estado 3 (Error ❌):** En el bloque `catch`, ocultar el loading y mostrar `#estado-error`.
-3. **Botón de Reintento:**
-   * Conectar el botón `#btn-reintentar` para que vuelva a ejecutar `descargarCatalogoAPI()` si la conexión falló.
-
----
-
-## ⏱️ Bloque 4 (Hora 4): Persistencia Local (LocalStorage) y Modularización
-
-> 🛑 **PAUSA EN EL AULA 4:** Hacer persistentes los favoritos del usuario y estructurar el código en módulos limpios.
-
-### 🎯 Consignas del Bloque 4:
-1. **Persistencia de Favoritos:**
-   * Implementar `obtenerFavoritos()` utilizando `localStorage.getItem()` y `JSON.parse()`.
-   * Implementar `alternarFavorito(id)`: si el producto ya está en favoritos lo elimina; si no, lo agrega, y guarda el array resultante con `localStorage.setItem()` y `JSON.stringify()`.
-2. **Actualización Reactiva del Header:**
-   * Actualizar el número del badge `#badge-favoritos-contador` con la cantidad total de favoritos guardados.
-3. **Delegación de Eventos de Alto Rendimiento:**
-   * En lugar de agregar un listener a cada botón de cada tarjeta, escuchar el evento `'click'` en `#contenedor-catalogo` y capturar el botón tocado con `evento.target.closest(".btn-fav-card")`.
-4. **Modularización Opcional (Desafío Pro):**
-   * Separar el código en módulos ES: `api.js` (para el fetch), `storage.js` (para localStorage) y `app.js` (para el control de la UI).
+### 🎯 Consignas:
+1. **Descarga Concurrente con `Promise.all()` (`descargarProductosTech`):**
+   * Descargar en paralelo las 3 categorías tecnológicas:
+     * `"https://dummyjson.com/products/category/smartphones"`
+     * `"https://dummyjson.com/products/category/laptops"`
+     * `"https://dummyjson.com/products/category/mobile-accessories"`
+   * Incorporar timeout de seguridad con `AbortSignal.timeout(8000)`.
+   * Validar que todas las respuestas tengan `res.ok === true`.
+   * Combinar todos los productos en un único array plano con `.flatMap()`.
+2. **Manejo de Estados de UI (`cargarCatalogo` en `app.js`):**
+   * Mostrar `#estado-loading` al iniciar.
+   * Ocultar loading y renderizar al recibir los datos.
+   * Mostrar `#estado-error` y permitir reintento con `#btn-reintentar` si la red falla.
 
 ---
 
-## 🏆 Criterios de Evaluación y Entrega
+## ⏱️ Bloque 4 (Hora 4): Persistencia y Delegación (`js/storage.js` y `js/app.js`)
 
-| Criterio | Excelente (10) | Regular (7) | Insuficiente (4) |
-| :--- | :--- | :--- | :--- |
-| **Manipulación del DOM** | Selección limpia, uso de `classList`, delegación de eventos y cero errores en consola. | Manipulación funcional pero con estilos en línea o listeners redundantes. | Errores de selección y falta de interactividad. |
-| **HOFs y ES6+** | Uso correcto de `.filter()`, `.map()`, `.reduce()` y destructuring sin mutaciones. | Uso parcial de HOFs o uso de bucles tradicionales `for`. | No utiliza métodos de array funcionales. |
-| **Fetch y Asincronismo** | `async/await` con manejo riguroso de los 3 estados (Loading, Éxito, Error) y `res.ok`. | Hace el fetch pero no maneja el estado de error o no valida `res.ok`. | La app se congela o rompe ante fallas de red. |
-| **Persistencia Local** | Favoritos guardados y recuperados correctamente con `JSON.stringify/parse`. | Almacenamiento básico pero pierde datos al recargar. | No implementa `localStorage`. |
+> 🛑 **PAUSA EN EL AULA 4:** Persistir favoritos y conectar la delegación de eventos.
 
-### 📤 Entrega:
-Al finalizar la clase o durante la semana:
-```bash
-git add .
-git commit -m "feat: completar proyecto integrador TechStore Clase 04"
-git push origin main
-```
+### 🎯 Consignas:
+1. **Módulo de Persistencia (`js/storage.js`):**
+   * `obtenerFavoritos()`: Leer de `localStorage` con `JSON.parse` (o `[]` si está vacío o falla).
+   * `esProductoFavorito(id)`: Retornar booleano si el ID está incluido en favoritos.
+   * `alternarFavorito(id)`: Agregar o quitar el ID de la lista y guardar con `JSON.stringify`.
+2. **Delegación de Eventos (`js/app.js`):**
+   * Escuchar clicks en `#contenedor-catalogo` y capturar el botón con `event.target.closest(".btn-fav-card")`.
+   * Alternar el favorito del producto clickeado y actualizar el badge del header `#badge-favoritos-contador`.
+3. **Filtro de Favoritos:**
+   * Permitir ver únicamente los favoritos marcados al tocar el botón del header o el botón de categoría `"⭐ Mis Favoritos"`.
+
+---
+
+## 🚀 Criterios de Evaluación
+
+- [ ] Arquitectura modular respetada (`api.js`, `storage.js`, `ui.js`, `app.js` con `import`/`export`).
+- [ ] Modo Oscuro funcionando y persistente en la UI.
+- [ ] Búsqueda y filtros funcionando con HOFs (`.filter` y `.reduce`).
+- [ ] Catálogo descargado desde la API con manejo de loading y error.
+- [ ] Favoritos persistidos en `localStorage` tras recargar la página (`F5`).
+- [ ] Código subido a GitHub con commits descriptivos en inglés o español profesional.
