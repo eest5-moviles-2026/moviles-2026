@@ -15,21 +15,35 @@
 
 
 // ==========================================================================
-// 🎯 1. Selección de Nodos Principales del DOM
+// 🎯 1. Selección de Nodos Principales del DOM (querySelector / querySelectorAll)
 // ==========================================================================
-const btnTema = document.querySelector("#btn-tema");
-const iconoTema = document.querySelector("#icono-tema");
-const btnVerFavoritos = document.querySelector("#btn-ver-favoritos");
-const inputBuscador = document.querySelector("#input-buscador");
-const botonesFiltro = document.querySelectorAll(".btn-filtro");
-const contenedorCatalogo = document.querySelector("#contenedor-catalogo");
-const totalProductosSpan = document.querySelector("#total-productos-visibles");
-const totalPrecioSpan = document.querySelector("#total-precio-acumulado");
-const estadoLoading = document.querySelector("#estado-loading");
-const estadoError = document.querySelector("#estado-error");
-const btnReintentar = document.querySelector("#btn-reintentar");
-const sinResultadosBox = document.querySelector("#sin-resultados");
-const badgeFavoritos = document.querySelector("#badge-favoritos-contador");
+// Seleccioná cada elemento del HTML usando su id (#) o clase (.):
+
+// 🌓 Botón de cambio de tema y su icono de sol/luna:
+const btnTema = null;            // TODO: document.querySelector('#btn-tema')
+const iconoTema = null;          // TODO: document.querySelector('#icono-tema')
+
+// ⭐ Botón del header para ver favoritos y su badge numérico contador:
+const btnVerFavoritos = null;    // TODO: document.querySelector('#btn-ver-favoritos')
+const badgeFavoritos = null;     // TODO: document.querySelector('#badge-favoritos-contador')
+
+// 🔍 Input del buscador y colección de botones de categorías:
+const inputBuscador = null;      // TODO: document.querySelector('#input-buscador')
+const botonesFiltro = null;      // TODO: document.querySelectorAll('.btn-filtro')
+
+// 📱 Contenedor donde se renderizan las tarjetas de productos:
+const contenedorCatalogo = null; // TODO: document.querySelector('#contenedor-catalogo')
+
+// 📊 Spans de la barra de métricas (total visibles y precio acumulado):
+const totalProductosSpan = null; // TODO: document.querySelector('#total-productos-visibles')
+const totalPrecioSpan = null;    // TODO: document.querySelector('#total-precio-acumulado')
+
+// ⏳ Paneles de estado de la aplicación (loading, error, reintento y sin resultados):
+const estadoLoading = null;      // TODO: document.querySelector('#estado-loading')
+const estadoError = null;        // TODO: document.querySelector('#estado-error')
+const btnReintentar = null;      // TODO: document.querySelector('#btn-reintentar')
+const sinResultadosBox = null;   // TODO: document.querySelector('#sin-resultados')
+
 
 // ==========================================================================
 // 🧠 2. Estado Global en Memoria
