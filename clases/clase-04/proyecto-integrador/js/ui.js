@@ -5,8 +5,25 @@
    ========================================================================== */
 
 /**
- * TODO: Exportar función crearTarjetaProductoHTML(producto, esFavorito)
- * que use Destructuring y retorne el string del <article class="tarjeta-producto">.
+ * TODO 1: Exportar función crearTarjetaProductoHTML(producto, esFavorito)
+ * 1. Extraer con Destructuring: { id, title, price, category, thumbnail, stock } desde 'producto'.
+ * 2. Retornar un Template Literal con la siguiente estructura HTML:
+ *    <article class="tarjeta-producto" data-id="${id}">
+ *        <div class="tarjeta-img-wrap">
+ *            <img src="${thumbnail}" alt="${title}" loading="lazy" class="tarjeta-img">
+ *            <span class="badge-categoria">${category}</span>
+ *            <button class="btn-fav-card ${esFavorito ? 'en-favoritos' : ''}" data-id="${id}" aria-label="Guardar favorito">
+ *                ${esFavorito ? '⭐' : '☆'}
+ *            </button>
+ *        </div>
+ *        <div class="tarjeta-cuerpo">
+ *            <h3 class="tarjeta-titulo">${title}</h3>
+ *            <div class="tarjeta-precio-wrap">
+ *                <span class="tarjeta-precio">$${price.toFixed(2)}</span>
+ *                <span class="tarjeta-stock">Stock: ${stock}</span>
+ *            </div>
+ *        </div>
+ *    </article>
  */
 export function crearTarjetaProductoHTML(producto, esFavorito) {
     // Tu código acá:

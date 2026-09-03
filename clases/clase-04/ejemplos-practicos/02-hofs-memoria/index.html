@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 02: HOFs y Transformación de Datos</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .panel {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            margin-bottom: 1.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .badge {
+            background: #8b5cf6;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .metricas {
+            display: flex;
+            gap: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        input, select {
+            padding: 0.6rem;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 GamerVault (Demo HOFs: Filter, Reduce, Map)</h1>
+        
+        <div class="panel">
+            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                <input type="text" id="filtro-nombre" placeholder="Buscar juego (ej: Zelda, Witcher)..." style="flex: 1;">
+                <select id="filtro-genero">
+                    <option value="todos">Todos los Géneros</option>
+                    <option value="RPG">RPG</option>
+                    <option value="Acción">Acción</option>
+                    <option value="Aventura">Aventura</option>
+                </select>
+            </div>
+
+            <div class="metricas">
+                <span>🎯 Juegos filtrados: <span id="total-juegos">0</span></span>
+                <span>💰 Valor acumulado: <span id="total-precio">$0.00</span></span>
+                <span>⏳ Horas promedio de juego: <span id="promedio-horas">0 hs</span></span>
+            </div>
+        </div>
+
+        <div id="contenedor-juegos" class="grid"></div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

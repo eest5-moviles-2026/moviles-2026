@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 01: DOM y Eventos Interactivos</title>
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --text-body: #1e293b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --primary: #3b82f6;
+        }
+        body.dark-mode {
+            --bg-body: #0f172a;
+            --text-body: #f8fafc;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --primary: #60a5fa;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-body);
+            margin: 0;
+            padding: 2rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        button {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-body);
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        button:hover {
+            border-color: var(--primary);
+        }
+        .categorias {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .btn-tag.activo {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-body);
+            color: var(--text-body);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .console-tip {
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>📰 Portal de Noticias (Demo DOM)</h2>
+            <button id="btn-modo-lectura">
+                <span id="icono-luz">🌙</span> Modo Oscuro
+            </button>
+        </header>
+
+        <label for="buscador-noticias"><strong>🔍 Buscador en vivo:</strong></label>
+        <input type="text" id="buscador-noticias" placeholder="Escribí para ver el evento input en consola...">
+
+        <label><strong>🏷️ Filtro de Secciones:</strong></label>
+        <div class="categorias">
+            <button class="btn-tag activo" data-seccion="todas">Todas</button>
+            <button class="btn-tag" data-seccion="tecnologia">Tecnología</button>
+            <button class="btn-tag" data-seccion="deportes">Deportes</button>
+            <button class="btn-tag" data-seccion="cultura">Cultura</button>
+        </div>
+
+        <div class="console-tip">
+            👉 <strong>Instrucción:</strong> Apretá <code>F12</code>, abrí la pestaña <strong>Console</strong> e interactuá con los botones y el buscador para ver los mensajes de depuración.
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

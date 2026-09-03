@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 04: LocalStorage y Delegación de Eventos</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #111827;
+            color: #f9fafb;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1f2937;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #374151;
+        }
+        .badge-equipo {
+            background: #e11d48;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .grid-heroes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .hero-card {
+            background: #1f2937;
+            border: 1px solid #374151;
+            padding: 1rem;
+            border-radius: 10px;
+            position: relative;
+        }
+        .btn-fav-hero {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #374151;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .btn-fav-hero.en-equipo {
+            background: #e11d48;
+        }
+        .storage-debug {
+            margin-top: 2rem;
+            background: #000;
+            color: #4ade80;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>🦸 HeroTeam (Demo Storage y Delegación)</h2>
+            <div>
+                <span class="badge-equipo">Tu Equipo: <span id="contador-equipo">0</span></span>
+                <button id="btn-vaciar-storage" style="margin-left: 0.5rem; padding: 0.3rem 0.6rem; cursor: pointer;">🗑️ Vaciar</button>
+            </div>
+        </header>
+
+        <p>💡 Tocá el corazón ❤️ para agregar o quitar superhéroes de tu equipo. Luego recargá la página con <strong>F5</strong> para comprobar que los datos persisten en tu navegador.</p>
+
+        <div id="contenedor-heroes" class="grid-heroes"></div>
+
+        <div class="storage-debug">
+            💾 <strong>Contenido real en localStorage (clave: 'demo_heroes_favoritos'):</strong><br>
+            <span id="storage-raw-json">[]</span>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

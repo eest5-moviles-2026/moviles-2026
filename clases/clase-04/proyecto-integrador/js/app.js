@@ -57,96 +57,83 @@ let categoriaActual = "todas";
 // ==========================================================================
 
 function actualizarBadgeFavoritos() {
-    badgeFavoritos.textContent = obtenerFavoritos().length;
+    // 1. Creá una variable 'favoritos' y guardá lo que te devuelve la función 'obtenerFavoritos()'.
+    // 2. Al texto de 'badgeFavoritos', asignale el tamaño (.length) de esa lista.
+    
 }
 
 function aplicarFiltros() {
-    const texto = inputBuscador.value;
-    const favoritosIds = obtenerFavoritos();
-    const productosFiltrados = filtrarProductos(productosEnMemoria, texto, categoriaActual, favoritosIds);
-
-    // Actualizar métricas
-    totalProductosSpan.textContent = productosFiltrados.length;
-    const totalAcumulado = calcularTotalCatalogo(productosFiltrados);
-    totalPrecioSpan.textContent = `$${totalAcumulado.toLocaleString("en-US", { minimumFractionDigits: 2 })}`;
-
-    // Renderizar tarjetas con .map().join('')
-    if (productosFiltrados.length === 0) {
-        contenedorCatalogo.innerHTML = "";
-        sinResultadosBox.classList.remove("oculto");
-    } else {
-        sinResultadosBox.classList.add("oculto");
-        contenedorCatalogo.innerHTML = productosFiltrados
-            .map(producto => crearTarjetaProductoHTML(producto, esProductoFavorito(producto.id)))
-            .join("");
-    }
+    // 1. Guardá en una constante 'texto' lo que escribió el usuario en el buscador.
+    // 2. Guardá en otra constante 'favoritosIds' la lista actual de favoritos.
+    // 3. Ejecutá la función 'filtrarProductos' pasándole los productos en memoria, el texto, la categoría actual y los favoritos, y guardá el resultado en una variable 'productosFiltrados'.
+    // 4. Actualizá el texto de 'totalProductosSpan' con la cantidad de productos filtrados.
+    // 5. Calculá el precio total llamando a 'calcularTotalCatalogo' con los productos filtrados y mostralo en 'totalPrecioSpan'.
+    // 6. Creá un condicional:
+    //    - Si la lista filtrada no tiene elementos (es 0): vaciá el catálogo y mostrá el cartel de sin resultados (quitando la clase 'oculto').
+    //    - De lo contrario (else): ocultá el cartel de sin resultados (agregando la clase 'oculto') y cargá en el catálogo las tarjetas transformando la lista con .map() y uniendo todo con .join("").
+    
 }
 
 function activarFiltroCategoria(categoria) {
-    categoriaActual = categoria;
-    botonesFiltro.forEach(b => {
-        if (b.dataset.categoria === categoria) {
-            b.classList.add("activo");
-        } else {
-            b.classList.remove("activo");
-        }
-    });
-    aplicarFiltros();
+    // 1. Guardá la categoría recibida en la variable 'categoriaActual'.
+    // 2. Recorré todos los botones de filtro con un bucle:
+    //    - Dentro del bucle, creá un if y fijate si la categoría del botón coincide con la recibida: si coincide agregale la clase 'activo', de lo contrario quitasela.
+    // 3. Al final, llamá a 'aplicarFiltros()' para refrescar la pantalla.
+    
 }
 
 // ==========================================================================
 // 🌐 4. Carga Asíncrona del Catálogo (Consumo del módulo api.js)
 // ==========================================================================
 async function cargarCatalogo() {
-    estadoLoading.classList.remove("oculto");
-    estadoError.classList.add("oculto");
-    contenedorCatalogo.innerHTML = "";
-
-    try {
-        // TODO: Invocar descargarProductosTech() y guardar en productosEnMemoria
-        // Luego ocultar loading y llamar a aplicarFiltros()
-        
-    } catch (error) {
-        console.error("Error al cargar productos:", error.message);
-        estadoLoading.classList.add("oculto");
-        estadoError.classList.remove("oculto");
-    }
+    // 1. Mostrá el spinner de carga (quitando 'oculto'), ocultá el mensaje de error (agregando 'oculto') y vaciá el catálogo.
+    // 2. Abrí un bloque try...catch:
+    //    - Dentro del try: esperá la descarga con 'await descargarProductosTech()', guardala en 'productosEnMemoria', ocultá el spinner y llamá a 'aplicarFiltros()'.
+    //    - Dentro del catch: mostrá el error por consola, ocultá el spinner y mostrá el panel de error para que puedan reintentar.
+    
 }
 
 // ==========================================================================
 // 🖱️ 5. Manejo de Eventos (Event Listeners & Delegación)
 // ==========================================================================
 
-// TODO 1: Modo Oscuro con classList.toggle en document.body
+// 🌓 Modo Oscuro:
+// Al hacer click en el botón de tema, alterná la clase 'dark-mode' en el body. Luego evaluá con un condicional: si el body tiene esa clase poné el icono de sol '☀️', sino poné el de luna '🌙'.
 btnTema.addEventListener("click", () => {
     
 });
 
-// TODO 2: Botón de Favoritos en el Header
+// ⭐ Botón de Favoritos en el Header:
+// Al hacer click, ejecutá 'activarFiltroCategoria' pasándole la categoría 'favoritos'.
 btnVerFavoritos.addEventListener("click", () => {
-    activarFiltroCategoria("favoritos");
+    
 });
 
-// TODO 3: Botones de Categorías
+// 🏷️ Botones de Categorías:
+// Recorré la colección de botones y a cada uno agregale el evento 'click' para que llame a 'activarFiltroCategoria' pasándole su categoría correspondiente.
 botonesFiltro.forEach(boton => {
     boton.addEventListener("click", () => {
-        activarFiltroCategoria(boton.dataset.categoria);
+        
     });
 });
 
-// TODO 4: Búsqueda en tiempo real
+// 🔍 Búsqueda en tiempo real:
+// Escuchá el evento 'input' en el buscador y llamá a 'aplicarFiltros()'.
 inputBuscador.addEventListener("input", () => {
-    aplicarFiltros();
+    
 });
 
-// TODO 5: Botón de Reintento ante fallas de red
+// 🔄 Botón de Reintento:
+// Al hacer click, volvé a llamar a 'cargarCatalogo()'.
 btnReintentar.addEventListener("click", () => {
-    cargarCatalogo();
+    
 });
 
-// TODO 6: Delegación de Eventos en contenedorCatalogo para alternar favoritos
+// 🌟 Delegación de Favoritos en el Catálogo:
+// 1. Al hacer click en cualquier parte del contenedor del catálogo, buscá con .closest() si se tocó el botón de favoritos de una tarjeta.
+// 2. Si no se tocó el botón, cortá la función (return).
+// 3. Si se tocó, obtené el id numérico del producto, ejecutá 'alternarFavorito(id)', actualizá el contador con 'actualizarBadgeFavoritos()' y volvé a llamar a 'aplicarFiltros()'.
 contenedorCatalogo.addEventListener("click", (evento) => {
-    // Capturar boton con closest(".btn-fav-card"), alternar y refrescar UI
     
 });
 
