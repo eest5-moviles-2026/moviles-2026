@@ -4,10 +4,15 @@
    Profesor: Axel Castellano Gutiérrez
    ========================================================================== */
 
-// 📦 Importación de Módulos ES6
-import { descargarProductosTech } from "./api.js";
-import { obtenerFavoritos, alternarFavorito, esProductoFavorito } from "./storage.js";
-import { crearTarjetaProductoHTML, filtrarProductos, calcularTotalCatalogo } from "./ui.js";
+// ==========================================================================
+// 📦 IMPORTACIÓN DE MÓDULOS ES6 (ES Modules)
+// ==========================================================================
+// TODO 1: Importar 'descargarProductosTech' desde './api.js'
+// TODO 2: Importar 'obtenerFavoritos', 'alternarFavorito' y 'esProductoFavorito' desde './storage.js'
+// TODO 3: Importar 'crearTarjetaProductoHTML', 'filtrarProductos' y 'calcularTotalCatalogo' desde './ui.js'
+// (Escribí tus imports acá abajo):
+
+
 
 // ==========================================================================
 // 🎯 1. Selección de Nodos Principales del DOM
