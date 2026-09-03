@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore Móvil - Proyecto Integrador Clase 04</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 📱 Barra Superior Móvil -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <span class="badge-tech">7º 5ta • Móviles</span>
+                <h1>TechStore Móvil</h1>
+            </div>
+            <div class="header-actions">
+                <!-- Botón de Favoritos con Badge -->
+                <button id="btn-ver-favoritos" class="btn-icon" aria-label="Ver favoritos">
+                    <span>⭐</span>
+                    <span id="badge-favoritos-contador" class="contador-badge">0</span>
+                </button>
+                <!-- Botón Interruptor de Modo Oscuro -->
+                <button id="btn-tema" class="btn-icon" aria-label="Cambiar tema">
+                    <span id="icono-tema">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🎯 Contenedor Principal de la App -->
+    <main class="main-container">
+        
+        <!-- 🔍 Barra de Búsqueda y Filtros Rápidos (Bloque 1 y 2) -->
+        <section class="seccion-controles">
+            <div class="busqueda-wrap">
+                <span class="busqueda-icono">🔍</span>
+                <input type="text" id="input-buscador" placeholder="Buscar por nombre (ej: iPhone, Galaxy, Laptop)..." autocomplete="off">
+            </div>
+
+            <div class="filtros-categorias">
+                <button class="btn-filtro activo" data-categoria="todas">Todas</button>
+                <button class="btn-filtro" data-categoria="smartphones">📱 Smartphones</button>
+                <button class="btn-filtro" data-categoria="laptops">💻 Laptops</button>
+                <button class="btn-filtro" data-categoria="mobile-accessories">🔌 Accesorios</button>
+                <button class="btn-filtro" data-categoria="favoritos">⭐ Mis Favoritos</button>
+            </div>
+        </section>
+
+        <!-- 📊 Barra de Métricas y Estado (Bloque 2 y 4) -->
+        <section class="seccion-metricas">
+            <div class="metrica-item">
+                <span class="metrica-label">Productos visibles:</span>
+                <span id="total-productos-visibles" class="metrica-valor">0</span>
+            </div>
+            <div class="metrica-item">
+                <span class="metrica-label">Valor total del catálogo:</span>
+                <span id="total-precio-acumulado" class="metrica-valor">$0.00</span>
+            </div>
+        </section>
+
+        <!-- ⏳ Estado de Carga (Spinner) (Bloque 3) -->
+        <div id="estado-loading" class="estado-box oculto">
+            <div class="spinner"></div>
+            <p>Conectando con el servidor y descargando productos...</p>
+        </div>
+
+        <!-- ❌ Estado de Error con Botón de Reintento (Bloque 3) -->
+        <div id="estado-error" class="estado-box error-box oculto">
+            <span class="error-icono">⚠️</span>
+            <h3>No se pudo cargar el catálogo</h3>
+            <p id="texto-error">Ocurrió un problema de conexión con la API.</p>
+            <button id="btn-reintentar" class="btn btn-primario">
+                🔄 Reintentar Conexión
+            </button>
+        </div>
+
+        <!-- 📦 Catálogo de Tarjetas Dinámicas (Bloques 1, 2, 3 y 4) -->
+        <section id="contenedor-catalogo" class="grid-catalogo">
+            <!-- Las tarjetas de productos se inyectarán aquí con JavaScript -->
+        </section>
+
+        <!-- 📭 Mensaje cuando no hay resultados en la búsqueda -->
+        <div id="sin-resultados" class="estado-box oculto">
+            <p>🔎 No se encontraron productos que coincidan con tu búsqueda.</p>
+        </div>
+    </main>
+
+    <!-- 🦶 Pie de Página -->
+    <footer class="app-footer">
+        <p>E.E.S.T N° 5 • Desarrollo de Software para Plataformas Móviles • 2026</p>
+    </footer>
+
+    <!-- Script de la Aplicación -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
