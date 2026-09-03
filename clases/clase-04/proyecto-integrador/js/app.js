@@ -15,34 +15,35 @@
 
 
 // ==========================================================================
-// 🎯 1. Selección de Nodos Principales del DOM (querySelector / querySelectorAll)
+// 🎯 1. Selección de Nodos Principales del DOM
 // ==========================================================================
-// Seleccioná cada elemento del HTML usando su id (#) o clase (.):
+// Revisá el archivo 'index.html' para identificar qué selector y método usar para cada constante:
 
-// 🌓 Botón de cambio de tema y su icono de sol/luna:
-const btnTema = null;            // TODO: document.querySelector('#btn-tema')
-const iconoTema = null;          // TODO: document.querySelector('#icono-tema')
+// 🌓 Botón para alternar el Modo Oscuro y su icono de sol/luna:
+const btnTema = null;
+const iconoTema = null;
 
-// ⭐ Botón del header para ver favoritos y su badge numérico contador:
-const btnVerFavoritos = null;    // TODO: document.querySelector('#btn-ver-favoritos')
-const badgeFavoritos = null;     // TODO: document.querySelector('#badge-favoritos-contador')
+// ⭐ Botón del header para ver favoritos y el span del contador numérico:
+const btnVerFavoritos = null;
+const badgeFavoritos = null;
 
-// 🔍 Input del buscador y colección de botones de categorías:
-const inputBuscador = null;      // TODO: document.querySelector('#input-buscador')
-const botonesFiltro = null;      // TODO: document.querySelectorAll('.btn-filtro')
+// 🔍 Campo de texto del buscador y colección con todos los botones de categorías:
+const inputBuscador = null;
+const botonesFiltro = null;
 
-// 📱 Contenedor donde se renderizan las tarjetas de productos:
-const contenedorCatalogo = null; // TODO: document.querySelector('#contenedor-catalogo')
+// 📱 Contenedor principal donde se inyectan las tarjetas de productos:
+const contenedorCatalogo = null;
 
-// 📊 Spans de la barra de métricas (total visibles y precio acumulado):
-const totalProductosSpan = null; // TODO: document.querySelector('#total-productos-visibles')
-const totalPrecioSpan = null;    // TODO: document.querySelector('#total-precio-acumulado')
+// 📊 Spans de la barra de métricas (total de productos visibles y valor total del catálogo):
+const totalProductosSpan = null;
+const totalPrecioSpan = null;
 
-// ⏳ Paneles de estado de la aplicación (loading, error, reintento y sin resultados):
-const estadoLoading = null;      // TODO: document.querySelector('#estado-loading')
-const estadoError = null;        // TODO: document.querySelector('#estado-error')
-const btnReintentar = null;      // TODO: document.querySelector('#btn-reintentar')
-const sinResultadosBox = null;   // TODO: document.querySelector('#sin-resultados')
+// ⏳ Bloques de estado de la app (spinner de carga, mensaje de error, botón de reintento y caja de sin resultados):
+const estadoLoading = null;
+const estadoError = null;
+const btnReintentar = null;
+const sinResultadosBox = null;
+
 
 
 // ==========================================================================
