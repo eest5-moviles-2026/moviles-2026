@@ -28,6 +28,7 @@ Esta guía consolida los conceptos fundamentales del asincronismo en JavaScript 
 
 * [1. El Rol del Frontend en la Web (Frontend $\neq$ Fetch)](#1-el-rol-del-frontend-en-la-web-frontend--fetch)
 * [2. Páginas Web vs. Endpoints de API](#2-páginas-web-vs-endpoints-de-api)
+  * [2.1 ¿Qué es realmente una API y cómo se construye?](#21-qué-es-realmente-una-api-y-cómo-se-construye)
 * [3. El Protocolo HTTP en el Medio: El Viaje de la Petición](#3-el-protocolo-http-en-el-medio-el-viaje-de-la-petición)
 * [4. Entendiendo la Promesa (`Promise`) antes del `await`](#4-entendiendo-la-promesa-promise-antes-del-await)
 * [5. Desmontando los Dos `await` con Precisión Técnica](#5-desmontando-los-dos-await-con-precisión-técnica)
@@ -66,6 +67,32 @@ Para construir aplicaciones web o móviles, debemos distinguir dos tipos de URLs
 | **Quién lo solicita** | El navegador directamente al escribir en la barra | El código JavaScript a través de `fetch()` |
 
 > 💡 **Idea clave:** `pantalones.html` nos da el local comercial listo para visitar (las paredes y estantes). `/api/productos` nos da el listado del inventario de productos sin formato visual.
+
+### 2.1 ¿Qué es realmente una API y cómo se construye?
+
+* **¿Qué significa API?:** *Application Programming Interface* (Interfaz de Programación de Aplicaciones).
+* **En la práctica:** Una API es la **ventanilla de atención digital** que habilita un servidor para que otros programas (como nuestro JavaScript en el navegador) puedan pedirle información estructurada o enviarle datos.
+
+#### La analogía de la Ventanilla de Atención:
+Si vas a un banco o a una oficina pública, no entrás a los archivos privados a buscar tu carpeta: te acercás a la **ventanilla** (la API), hacés tu solicitud y el empleado (Backend) busca en el sistema (Base de Datos) y te entrega el sobre con tu documento (Respuesta JSON).
+
+#### ¿Cómo se construye un Endpoint de una API en el Backend?
+En el servidor (usando Node.js / Express por ejemplo), una API se crea definiendo **rutas** (*endpoints*) que escuchan peticiones HTTP y responden con datos en formato JSON:
+
+```javascript
+// Código del Servidor Backend (ej. Express en Node.js)
+app.get('/api/productos', (req, res) => {
+  const listaProductos = [
+    { id: 1, nombre: "Teclado Mecánico", precio: 45000 },
+    { id: 2, nombre: "Mouse Gamer", precio: 25000 }
+  ];
+  
+  // El servidor responde enviando los datos estructurados en formato JSON
+  res.json(listaProductos);
+});
+```
+
+Cuando en nuestro JavaScript del Frontend ejecutamos `await fetch('/api/productos')`, estamos realizando una petición HTTP que golpea exactamente esa ruta del servidor para recibir ese array de productos.
 
 ---
 
@@ -262,13 +289,14 @@ Usá estas preguntas para comprobar si tenés claro el modelo mental antes de re
 1. ¿Qué hace la función `fetch()` y quién la ejecuta?
 2. ¿Qué relación hay entre `fetch()` y el protocolo HTTP?
 3. ¿Qué diferencia hay entre la URL de una página (`/pantalones.html`) y la de un endpoint (`/api/productos`)?
-4. ¿Qué devuelve `fetch()` al ejecutarse sin `await`?
-5. ¿Qué es una `Promise` y cuáles son sus estados?
-6. ¿Por qué se escriben dos palabras clave `await` en una petición típica?
-7. ¿Qué es la variable `response` y por qué aún no contiene el array de productos?
-8. ¿Qué hace `response.json()` y qué tipo de objeto devuelve?
-9. ¿Cómo se transforman los datos recibidos de la API hasta mostrarse en la pantalla?
-10. ¿Qué diferencia existe entre un error de red y una respuesta HTTP 404?
+4. ¿Qué es una API y cómo responde un servidor a una solicitud de la API?
+5. ¿Qué devuelve `fetch()` al ejecutarse sin `await`?
+6. ¿Qué es una `Promise` y cuáles son sus estados?
+7. ¿Por qué se escriben dos palabras clave `await` en una petición típica?
+8. ¿Qué es la variable `response` y por qué aún no contiene el array de productos?
+9. ¿Qué hace `response.json()` y qué tipo de objeto devuelve?
+10. ¿Cómo se transforman los datos recibidos de la API hasta mostrarse en la pantalla?
+11. ¿Qué diferencia existe entre un error de red y una respuesta HTTP 404?
 
 ---
 
