@@ -3,7 +3,7 @@
 **Clase 05:** Del Navegador a la API Remota y al DOM (Profundización)  
 **Profesor:** Axel Castellano Gutiérrez  
 
-Esta guía docente consolida los conceptos fundamentales del asincronismo en JavaScript y el flujo completo de peticiones HTTP, diseñada específicamente para construir un **modelo mental sólido** en estudiantes de nivel secundario técnico (7° Año - E.E.S.T N° 5).
+Esta guía consolida los conceptos fundamentales del asincronismo en JavaScript y el flujo completo de peticiones HTTP, diseñada específicamente para construir un **modelo mental sólido** en estudiantes de nivel secundario técnico (7° Año - E.E.S.T N° 5).
 
 ```
  ┌─────────────────────────────────────────────────────────────────────────────────────────┐
@@ -36,15 +36,15 @@ Esta guía docente consolida los conceptos fundamentales del asincronismo en Jav
 * [8. De la API al DOM: El Recorrido Completo](#8-de-la-api-al-dom-el-recorrido-completo)
 * [9. Conexión con el Backend (El Flujo Real Completo)](#9-conexión-con-el-backend-el-flujo-real-completo)
 * [10. Control de Errores: Errores de Red vs. Respuestas HTTP de Error](#10-control-de-errores-errores-de-red-vs-respuestas-http-de-error)
-* [11. Catálogo de Errores Típicos de Alumnos y Cómo Explicarlos](#11-catálogo-de-errores-típicos-de-alumnos-y-cómo-explicarlos)
-* [12. Preguntas de Comprobación Oral para la Clase](#12-preguntas-de-comprobación-oral-para-la-clase)
+* [11. Mitos Frecuentes y Errores Comunes sobre Fetch](#11-mitos-frecuentes-y-errores-comunes-sobre-fetch)
+* [12. Preguntas de Auto-evaluación y Repaso](#12-preguntas-de-auto-evaluación-y-repaso)
 * [13. Conexión con el Proyecto Integrador y Próxima Clase](#13-conexión-con-el-proyecto-integrador-y-próxima-clase)
 
 ---
 
 ## 1. El Rol del Frontend en la Web (Frontend $\neq$ Fetch)
 
-Es fundamental que los alumnos comprendan que el **JavaScript del Frontend** abarca toda la lógica interactiva que corre en el navegador del usuario:
+Es fundamental comprender que el **JavaScript del Frontend** abarca toda la lógica interactiva que corre en el navegador del usuario:
 * Escuchar y responder a eventos (clicks, teclas, formularios).
 * Validar datos antes de enviarlos.
 * Modificar el árbol del DOM para actualizar la pantalla dinámicamente.
@@ -82,7 +82,7 @@ $$\text{USUARIO} \rightarrow \text{Evento JS} \rightarrow \text{fetch()} \righta
 
 ## 4. Entendiendo la Promesa (`Promise`) antes del `await`
 
-Antes de incorporar `await`, mostramos lo que ocurre en memoria al ejecutar `fetch()` directamente:
+Antes de incorporar `await`, observá lo que ocurre en memoria al ejecutar `fetch()` directamente:
 
 ```javascript
 function probarSinAwait() {
@@ -187,7 +187,7 @@ async function cargarCatalogo() {
 
 ## 9. Conexión con el Backend (El Flujo Real Completo)
 
-Para conectar con el proyecto real sin entrar en detalles profundos del servidor, mostramos el recorrido completo:
+Para comprender cómo encaja esto en un proyecto real completo, observá la ruta de datos de extremo a extremo:
 
 ```
 [FRONTEND]                   [HTTP]                      [BACKEND / EXPRESS]
@@ -211,7 +211,7 @@ Objetos / Arrays JS  ───►  Procesamiento  ───►  DOM  ───�
 ## 10. Control de Errores: Errores de Red vs. Respuestas HTTP de Error
 
 ### La Distinción Fundamental:
-1. **Error de Red / Comunicación:** Ocurre cuando el usuario se queda sin Internet, el servidor está apagado o falla el DNS. En este caso, la promesa de `fetch()` se **rechaza** y el flujo cae directamente en el bloque `catch`.
+1. **Error de Red / Comunicación:** Ocurre cuando se pierde conexión a Internet, el servidor está apagado o falla el DNS. En este caso, la promesa de `fetch()` se **rechaza** y el flujo cae directamente en el bloque `catch`.
 2. **Respuesta HTTP con estado de error (404 / 500):** Ocurre cuando la red funciona, el servidor responde, pero indica que el recurso no existe (`404`) o falló internamente (`500`). En este caso, `fetch()` **SÍ resuelve su promesa exitosamente**, entregando un objeto `Response` donde `response.ok` es `false`.
 
 ### Código de Validación Seguro:
@@ -236,41 +236,39 @@ async function cargarDatosSeguro() {
 
 ---
 
-## 11. Catálogo de Errores Típicos de Alumnos y Cómo Explicarlos
+## 11. Mitos Frecuentes y Errores Comunes sobre Fetch
 
-### Error 1: "Pensar que `fetch()` devuelve directamente los datos"
-* **Explicación docente:** *"Internet toma tiempo. `fetch()` sin `await` te da un ticket de reclamo (Promesa), no los datos entregados."*
+### Mito 1: "Pensar que `fetch()` devuelve directamente los datos"
+* **La realidad:** Internet toma tiempo. `fetch()` sin `await` te devuelve un ticket de reclamo (Promesa), no los datos entregados.
 
-### Error 2: "Pensar que `await` frena toda la computadora"
-* **Explicación docente:** *"`await` solo le pide a esta función asíncrona particular que espere. El resto del navegador sigue funcionando y respondiendo al usuario normalmente."*
+### Mito 2: "Pensar que `await` frena toda la computadora"
+* **La realidad:** `await` solo le pide a esa función asíncrona en particular que espere. El resto del navegador sigue funcionando y respondiendo al usuario normalmente.
 
-### Error 3: "Confundir la URL de una página con la de un endpoint"
-* **Explicación docente:** *"`pantalones.html` es el plano visual del local. El endpoint `/api/productos` es la lista de inventario."*
+### Mito 3: "Confundir la URL de una página con la de un endpoint"
+* **La realidad:** `pantalones.html` es el plano visual del local. El endpoint `/api/productos` es la lista de inventario.
 
-### Error 4: "Olvidar el segundo `await` en `response.json()`"
-* **Explicación docente:** *"Procesar el cuerpo de la respuesta y convertirlo a objetos JS es una operación asíncrona. `.json()` devuelve su propia promesa y necesita su propio `await`."*
+### Mito 4: "Olvidar el segundo `await` en `response.json()`"
+* **La realidad:** Procesar el cuerpo de la respuesta y convertirlo a objetos JS es una operación asíncrona. `.json()` devuelve su propia promesa y necesita su propio `await`.
 
-### Error 5: "Pensar que `fetch()` entra a `catch` en un error 404"
-* **Explicación docente:** *"Un error 404 es una respuesta del servidor que llegó con éxito. La carta llegó y dice 'no encontrado'. Por eso debemos verificar `response.ok`."*
+### Mito 5: "Pensar que `fetch()` entra a `catch` en un error 404"
+* **La realidad:** Un error 404 es una respuesta del servidor que llegó con éxito. La carta llegó y dice 'no encontrado'. Por eso debemos verificar siempre `response.ok`.
 
 ---
 
-## 12. Preguntas de Comprobación Oral para la Clase
+## 12. Preguntas de Auto-evaluación y Repaso
 
-El docente puede usar estas preguntas durante la clase para verificar el modelo mental de los alumnos:
+Usá estas preguntas para comprobar si tenés claro el modelo mental antes de resolver los ejercicios:
 
-1. **¿Qué hace `fetch()`?** *(Realiza una petición HTTP asíncrona desde el JavaScript del frontend hacia una URL).*
-2. **¿Quién ejecuta `fetch()`?** *(El motor de JavaScript del navegador en el Frontend).*
-3. **¿Qué relación hay entre `fetch()` y HTTP?** *(`fetch()` es la función JS que envía el HTTP Request y recibe el HTTP Response).*
-4. **¿Qué diferencia hay entre una página (`/pantalones.html`) y un endpoint (`/api/productos`)?** *(La página devuelve la vista visual en HTML; el endpoint devuelve datos puros estructurados en JSON).*
-5. **¿Qué devuelve `fetch()` al ejecutarse?** *(Una Promesa (`Promise`) pendiente de resolución).*
-6. **¿Qué es una `Promise`?** *(Un objeto JS que representa un valor que estará disponible en el futuro cuando termine la tarea asíncrona).*
-7. **¿Por qué hay dos `await`?** *(El primero espera la `Promise` de `fetch` que da el `Response`; el segundo espera la `Promise` de `response.json()` que da los objetos/arrays JS).*
-8. **¿Qué es `response`?** *(Es el objeto de JavaScript que representa la respuesta HTTP completa devuelta por el servidor).*
-9. **¿Por qué `response` todavía no es el array de productos?** *(Porque contiene los metadatos HTTP como `status` y `ok`, mientras que los datos útiles están en el cuerpo sin procesar).*
-10. **¿Qué hace `response.json()`?** *(Lee el cuerpo de la respuesta de forma asíncrona y devuelve una `Promise` que resuelve a objetos/arrays de JS).*
-11. **¿Cómo termina la información de la API apareciendo en el DOM?** *(Se extraen los datos JS con `await response.json()`, se recorre el array con JS y se crean nodos HTML que se insertan en el DOM).*
-12. **¿Qué diferencia hay entre un error de red y un HTTP 404?** *(Un error de red no recibe respuesta y rechaza la promesa cayendo en `catch`; un 404 recibe respuesta con `response.ok = false`).*
+1. ¿Qué hace la función `fetch()` y quién la ejecuta?
+2. ¿Qué relación hay entre `fetch()` y el protocolo HTTP?
+3. ¿Qué diferencia hay entre la URL de una página (`/pantalones.html`) y la de un endpoint (`/api/productos`)?
+4. ¿Qué devuelve `fetch()` al ejecutarse sin `await`?
+5. ¿Qué es una `Promise` y cuáles son sus estados?
+6. ¿Por qué se escriben dos palabras clave `await` en una petición típica?
+7. ¿Qué es la variable `response` y por qué aún no contiene el array de productos?
+8. ¿Qué hace `response.json()` y qué tipo de objeto devuelve?
+9. ¿Cómo se transforman los datos recibidos de la API hasta mostrarse en la pantalla?
+10. ¿Qué diferencia existe entre un error de red y una respuesta HTTP 404?
 
 ---
 
