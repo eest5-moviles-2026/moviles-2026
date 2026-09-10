@@ -157,3 +157,6 @@ DOM
   ↓
 Pantalla
 ```
+
+
+Proyecto realizado por el profesor como material académico: https://github.com/Axldev1991/tp-integrador-castellano-fernandez
