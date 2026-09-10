@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase 05 - Asincronismo, HTTP y Fetch (7° 5ta)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    button {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0b5ed7;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+    .card {
+      border: 1px solid #dee2e6;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+    .error {
+      color: #dc3545;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 Clase 05: Asincronismo, HTTP y Fetch</h1>
+  <p>Abran la consola del navegador (F12) y resuelvan las consignas en <code>app.js</code>.</p>
+
+  <!-- Ejercicio 4 -->
+  <section>
+    <h2>Ejercicio 4: Mi Primer Renderizado</h2>
+    <button id="btnCargar">Cargar Tarea</button>
+    <h3 id="tituloTarea">Esperando carga...</h3>
+  </section>
+
+  <!-- Ejercicio 5 -->
+  <section>
+    <h2>Ejercicio 5: Lista de Usuarios</h2>
+    <ul id="listaUsuarios"></ul>
+  </section>
+
+  <!-- Ejercicio 6 -->
+  <section>
+    <h2>Ejercicio 6: Control de Errores HTTP</h2>
+    <p id="mensajeError"></p>
+  </section>
+
+  <!-- Ejercicio 8 -->
+  <section>
+    <h2>Ejercicio 8: Búsqueda con Parámetros (Profundización)</h2>
+    <input type="text" id="inputBuscar" placeholder="Ej: phone, laptop...">
+    <button id="btnBuscar">Buscar Producto</button>
+  </section>
+
+  <!-- Ejercicio 9 -->
+  <section>
+    <h2>Ejercicio 9: Catálogo Dinámico</h2>
+    <button id="btnCatalogo">Cargar Catálogo</button>
+    <div id="catalogo"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+[
+  { "id": 1, "nombre": "Teclado Mecánico RGB", "precio": 45000 },
+  { "id": 2, "nombre": "Mouse Gamer Optico", "precio": 25000 },
+  { "id": 3, "nombre": "Monitor 24 FHD", "precio": 120000 },
+  { "id": 4, "nombre": "Auriculares Bluetooth", "precio": 35000 }
+]
