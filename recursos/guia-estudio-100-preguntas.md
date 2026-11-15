@@ -87,10 +87,6 @@ Esta guía contiene las 100 preguntas clave de la materia organizadas por módul
 
 ## Módulo 2: Control de Versiones con Git, GitHub y Gobernanza (Preguntas 16 a 30)
 
----
-
-## Módulo 2: Control de Versiones con Git, GitHub y Gobernanza (Preguntas 16 a 30)
-
 #### 16. ¿Cuál es la diferencia fundamental entre Git y GitHub?
 * **Respuesta:** Git es el software de control de versiones local y distribuido, mientras que GitHub es una plataforma en la nube para alojar y colaborar en repositorios Git.
 * **Explicación:** Git opera de manera autónoma en local sin necesidad de internet; GitHub provee sincronización remota, gestión de issues, PRs y gobernanza.
@@ -150,10 +146,6 @@ Esta guía contiene las 100 preguntas clave de la materia organizadas por módul
 #### 30. En la jerarquía de ramas de un equipo, ¿qué rol cumple la rama `develop`?
 * **Respuesta:** Es la rama de integración continua donde convergen las características terminadas antes de pasar a la rama principal de producción (`main`).
 * **Explicación:** En GitFlow o flujos ágiles, `develop` actúa como colchón de integración para comprobar la compatibilidad de módulos antes de liberar versiones estables a `main`.
-
----
-
-## Módulo 3: JavaScript Moderno (ES6+) y Manipulación del DOM (Preguntas 31 a 45)
 
 ---
 
@@ -223,10 +215,6 @@ Esta guía contiene las 100 preguntas clave de la materia organizadas por módul
 
 ## Módulo 4: Asincronismo, Promesas, Fetch y Consumo de APIs REST (Preguntas 46 a 60)
 
----
-
-## Módulo 4: Asincronismo, Promesas, Fetch y Consumo de APIs REST (Preguntas 46 a 60)
-
 #### 46. Dado que JavaScript es de un solo hilo (*single-threaded*), ¿cómo ejecuta peticiones de red sin congelar la interfaz de usuario?
 * **Respuesta:** Mediante el Modelo Asíncrono no bloqueante basado en el Bucle de Eventos (*Event Loop*) y las APIs del navegador (Web APIs).
 * **Explicación:** Las operaciones pesadas o de red se delegan a las Web APIs del navegador; una vez finalizadas, sus callbacks entran a la cola del Event Loop.
@@ -286,10 +274,6 @@ Esta guía contiene las 100 preguntas clave de la materia organizadas por módul
 #### 60. ¿Qué significa el error de navegador "CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource"?
 * **Respuesta:** Que el navegador bloqueó la petición por seguridad porque el origen del frontend (dominio o puerto) es distinto al del backend y el servidor no autorizó el intercambio cruzado.
 * **Explicación:** CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad del navegador que requiere que el backend declare orígenes autorizados mediante cabeceras HTTP.
-
----
-
-## Módulo 5: Almacenamiento Web (Storage) y PWA Manifest (Preguntas 61 a 75)
 
 ---
 
@@ -359,10 +343,6 @@ Esta guía contiene las 100 preguntas clave de la materia organizadas por módul
 
 ## Módulo 6: Service Workers, Ciclo de Vida y Estrategias de Caché Offline (Preguntas 76 a 90)
 
----
-
-## Módulo 6: Service Workers, Ciclo de Vida y Estrategias de Caché Offline (Preguntas 76 a 90)
-
 #### 76. ¿Qué es un Service Worker en una arquitectura PWA?
 * **Respuesta:** Un script de JavaScript que el navegador ejecuta en segundo plano, en un hilo independiente, desacoplado de la página web y del DOM, actuando como proxy de red programable.
 * **Explicación:** Al correr en un worker thread separado, puede interceptar peticiones de red, manipular la caché local y recibir notificaciones push en segundo plano.
@@ -422,10 +402,6 @@ Esta guía contiene las 100 preguntas clave de la materia organizadas por módul
 #### 90. ¿Qué llamada se utiliza habitualmente dentro del evento `'activate'` para que el nuevo Service Worker tome el control inmediato de todas las pestañas abiertas sin necesidad de recargarlas?
 * **Respuesta:** `self.clients.claim()`
 * **Explicación:** `clients.claim()` fuerza a que las páginas bajo el alcance (*scope*) del worker comiencen a ser controladas de inmediato por la versión recién activada.
-
----
-
-## Módulo 7: Arquitectura MVC, Backend con Express y Bases de Datos Cloud (Preguntas 91 a 100)
 
 ---
 
