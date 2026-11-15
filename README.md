@@ -20,6 +20,7 @@ Este enfoque permite:
 
 ## 📅 Contenidos y Planificación
 *   [Planificación de clases detallada](file:///home/axel/Escritorio/Clases/planificacion-2026.md): Cronograma clase por clase con conceptos y actividades prácticas de agosto a diciembre.
+*   📖 [Guía de Estudio: 100 Preguntas y Respuestas Conceptuales](recursos/guia-estudio-100-preguntas.md): Banco de preguntas y respuestas fundamentales con explicación técnica para repasar los 7 módulos de la materia.
 
 ---
 
