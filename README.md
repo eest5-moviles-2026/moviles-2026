@@ -21,6 +21,7 @@ Este enfoque permite:
 ## 📅 Contenidos y Planificación
 *   [Planificación de clases detallada](file:///home/axel/Escritorio/Clases/planificacion-2026.md): Cronograma clase por clase con conceptos y actividades prácticas de agosto a diciembre.
 *   📖 [Guía de Estudio: 100 Preguntas y Respuestas Conceptuales](recursos/guia-estudio-100-preguntas.md): Banco de preguntas y respuestas fundamentales con explicación técnica para repasar los 7 módulos de la materia.
+*   🎓 [Guía Oficial: Preparación para la Defensa Individual del Proyecto](recursos/guia-preparacion-defensa-alumnos.md): Explicación del circuito MVC del dato, las 7 preguntas filtro y pautas de la defensa oral en máquina.
 
 ---
 
